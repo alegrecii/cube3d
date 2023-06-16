@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_utils.c                                       :+:      :+:    :+:   */
+/*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 20:25:33 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/16 17:13:02 by alegreci         ###   ########.fr       */
+/*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
+/*   Updated: 2023/06/16 17:30:43 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_free_all_map(char **all_map)
+int	input_manager(int keycode, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (all_map[i])
-	{
-		free(all_map[i]);
-		i++;
-	}
-	free(all_map[i]);
-}
-
-int	super_exit(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
+	if (keycode == ESC)
+		super_exit(data);
 	return (0);
 }

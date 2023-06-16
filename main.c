@@ -3,25 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/12 19:03:45 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:55:39 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	image_init(t_data *data)
+{
+	t_img	screen;
+
+	screen.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	screen.addr = mlx_get_data_addr(screen.img, &screen.bits_per_pixel, \
+	&screen.line_length, &screen.endian);
+	data->screen = screen;
+}
+
 void	init_game(t_data *data, char **argv)
 {
-	//init_data(data);
-	data->path = argv[1];
-	map_conversion(data);
+	map_conversion(data, argv[1]);
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
+	image_init(data);
+	game_starter(data);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	if (argc == 2)
 	{

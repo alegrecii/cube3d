@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/12 20:48:53 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:03:50 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	counter_all_mapfile(t_data *data)
+int	counter_all_mapfile(char *path)
 {
 	char	*s;
 	int		fd;
 	int		i;
 
 	i = 1;
-	fd = open(data->path, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	s = get_next_line(fd);
 	while (s)
 	{
@@ -83,7 +83,7 @@ void	save_map(t_data *data, char **all_map)
 	}
 }
 
-void	map_conversion(t_data *data)
+void	map_conversion(t_data *data, char *path)
 {
 	char	**all_map;
 	int		i;
@@ -91,9 +91,9 @@ void	map_conversion(t_data *data)
 	int		len;
 
 	i = 0;
-	len = counter_all_mapfile(data);
+	len = counter_all_mapfile(path);
 	all_map = malloc(sizeof(char *) * len + 1);
-	fd = open(data->path, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	while (i < len)
 	{
 		all_map[i] = get_next_line(fd);
@@ -102,5 +102,6 @@ void	map_conversion(t_data *data)
 	save_map(data, all_map);
 	save_path_text(data, all_map);
 	save_fc_color(data, all_map);
+	close(fd);
 	ft_free_all_map(all_map);
 }

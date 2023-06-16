@@ -3,18 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alegreci <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/17 13:45:50 by mdi-paol          #+#    #+#              #
-#    Updated: 2023/06/12 20:34:59 by mdi-paol         ###   ########.fr        #
+#    Updated: 2023/06/16 17:30:30 by alegreci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 LIBFT = libft/libft.a
+LIBMLX = mlx/libmlx.a
 GNL = Get_Next_Line/get_next_line.c Get_Next_Line/get_next_line_utils.c
-SRC = main.c checker.c init_map.c init_map2.c init_map3.c free_utils.c
+SRC = main.c checker.c init_map.c updater.c input_manager.c game_starter.c init_map2.c init_map3.c free_utils.c
 FLAGS = -Wall -Werror -Wextra -g
+MFLAGS = -lX11 -lXext -lm
 
 all : $(NAME)
 
@@ -25,7 +27,7 @@ lf:
 	@make bonus -sC libft
 
 ps:
-			gcc $(FLAGS) $(SRC) $(LIBFT) $(GNL) -o $(NAME)
+			gcc $(FLAGS) $(SRC) $(LIBFT) $(LIBMLX) $(GNL) $(MFLAGS) -o $(NAME)
 			@echo "\033[1;32m✅ Compiled ✅\033[0m"
 
 clean :		libclean

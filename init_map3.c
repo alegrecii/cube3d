@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   init_map3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:34:30 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/12 20:45:43 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/16 18:59:26 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+unsigned int	rgb_to_hex(int r, int g, int b)
+{
+	unsigned int	hex;
+	hex = r * 65536 + g * 256 + b;
+	return (hex);
+}
+
+void	color_converter(t_data *data)
+{
+	char	**ceiling;
+	char	**floor;
+
+	ceiling = ft_split(data->fc_color[1], ',');
+	floor = ft_split(data->fc_color[0], ',');
+	data->ceiling = rgb_to_hex(ft_atoi(ceiling[0] + 2), \
+	ft_atoi(ceiling[1]), ft_atoi(ceiling[2]));
+	data->floor = rgb_to_hex(ft_atoi(floor[0] + 2), \
+	ft_atoi(floor[1]), ft_atoi(floor[2]));
+}
 
 void	save_ceiling_color(t_data *data, char **all_map)
 {
@@ -62,4 +82,5 @@ void	save_fc_color(t_data *data, char **all_map)
 	data->fc_color[2] = NULL;
 	save_floor_color(data, all_map);
 	save_ceiling_color(data, all_map);
+	color_converter(data);
 }
