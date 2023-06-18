@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/16 17:03:50 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:08:20 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	save_map(t_data *data, char **all_map)
 	}
 }
 
-void	map_conversion(t_data *data, char *path)
+int	map_conversion(t_data *data, char *path)
 {
 	char	**all_map;
 	int		i;
@@ -92,6 +92,11 @@ void	map_conversion(t_data *data, char *path)
 
 	i = 0;
 	len = counter_all_mapfile(path);
+	if (!len)
+	{
+		write(2, "Error: can't access file map\n", 29);
+		return (1);
+	}
 	all_map = malloc(sizeof(char *) * len + 1);
 	fd = open(path, O_RDONLY);
 	while (i < len)
@@ -104,4 +109,5 @@ void	map_conversion(t_data *data, char *path)
 	save_fc_color(data, all_map);
 	close(fd);
 	ft_free_all_map(all_map);
+	return (0);
 }

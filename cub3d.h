@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/16 18:13:14 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:06:23 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_data
 
 }		t_data;
 
-void	map_conversion(t_data *data, char *path);
+int	map_conversion(t_data *data, char *path);
 int		check_arg(char **str);
 void	ft_free_all_map(char **all_map);
 void	save_path_text(t_data *data, char **all_map);
