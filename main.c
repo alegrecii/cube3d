@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/18 19:05:43 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:23:02 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	image_init(t_data *data)
 	data->screen = screen;
 }
 
-void	init_game(t_data *data, char **argv)
+int	init_game(t_data *data, char **argv)
 {
 	if (map_conversion(data, argv[1]))
-		return ;
+		return (write(1, "Error: Map error\n", 17));
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	image_init(data);
 	game_starter(data);
+	return (0);
 }
 
 int	main(int argc, char **argv)

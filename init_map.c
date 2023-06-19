@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/18 19:08:20 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:15:49 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ void	save_map_helper(t_data *data, char **all_map, int i)
 	data->map = malloc(sizeof(char *) * len + 1);
 	while (j < len)
 	{
-		data->map[j] = all_map[i];
+		data->map[j] = ft_strdup(all_map[i]);
 		i++;
 		j++;
 	}
+	data->map[j] = NULL;
 }
 
 void	save_map(t_data *data, char **all_map)
@@ -109,5 +110,5 @@ int	map_conversion(t_data *data, char *path)
 	save_fc_color(data, all_map);
 	close(fd);
 	ft_free_all_map(all_map);
-	return (0);
+	return (cam_init(data));
 }

@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/16 19:03:30 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:27:29 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ void	draw_background(t_data *data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
 }
 
 int	updater(t_data *data)
 {
 	draw_background(data);
+	raycaster(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/18 19:06:23 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:00:10 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define ESC 65307
+# define FOV 0.66
 
 /* typedef struct s_images
 {
@@ -39,6 +40,25 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+typedef struct s_ray
+{
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+}		t_ray;
+
+
+typedef struct s_cam
+{
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	camx;
+	double	camy;
+}		t_cam;
+
 typedef struct s_data
 {
 	void			*win;
@@ -49,10 +69,11 @@ typedef struct s_data
 	unsigned int	ceiling;
 	unsigned int	floor;
 	t_img			screen;
-
+	t_cam			cam_state;
 }		t_data;
 
-int	map_conversion(t_data *data, char *path);
+
+int		map_conversion(t_data *data, char *path);
 int		check_arg(char **str);
 void	ft_free_all_map(char **all_map);
 void	save_path_text(t_data *data, char **all_map);
@@ -61,6 +82,7 @@ int		super_exit(t_data *data);
 void	game_starter(t_data *data);
 int		input_manager(int keycode, t_data *data);
 int		updater(t_data *data);
-
+int		cam_init(t_data *data);
+void	raycaster(t_data *data);
 #endif
 
