@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:17:59 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/19 16:40:14 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:14:22 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	cam_setter_helper(char c, t_cam *cam)
 		cam->camx = 0;
 		cam->camy = FOV;
 	}
-	if (c == 'O')
+	if (c == 'W')
 	{
 		cam->dirx = -1;
 		cam->diry = 0;
@@ -32,8 +32,9 @@ void	cam_setter_helper(char c, t_cam *cam)
 
 int	cam_setter(char c, int y, int x, t_cam *cam)
 {
-	cam->posx = x;
-	cam->posy = y;
+	cam->posx = (double)x + 0.5;
+	cam->posy = (double)y + 0.5;
+	//printf("x :%f, y:%f\n",cam->posx, cam->posy);
 	if (c == 'N')
 	{
 		cam->dirx = 0;
@@ -64,7 +65,11 @@ int	cam_init(t_data *data)
 		while (data->map[y][x])
 		{
 			if (ft_strchr("NSWE", data->map[y][x]))
-				return (cam_setter(data->map[y][x], y, x, &data->cam_state));
+			{
+				cam_setter(data->map[y][x], y, x, &data->cam_state);
+				data->map[y][x] = '0';
+				return (0);
+			}
 			x++;
 		}
 		y++;

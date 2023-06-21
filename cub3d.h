@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/19 19:00:10 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:17:26 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,20 @@
 # include "Get_Next_Line/get_next_line.h"
 # include <sys/types.h>
 # include "mlx/mlx.h"
+# include <math.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define D_KEY 100
+# define A_KEY 97
+# define W_KEY 119
+# define S_KEY 115
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+/* # define WIDTH 1920
+# define HEIGHT 1080 */
+# define WIDTH 640
+# define HEIGHT 480
+# define SPEED 0.1
+# define ROT 0.05
 # define ESC 65307
 # define FOV 0.66
 
@@ -46,6 +57,16 @@ typedef struct s_ray
 	double	posy;
 	double	dirx;
 	double	diry;
+	double	side_distx;
+	double	side_disty;
+	double	delta_distx;
+	double	delta_disty;
+	double	len;
+	int		stepx;
+	int		stepy;
+	int		side;
+	int		mapx;
+	int		mapy;
 }		t_ray;
 
 
@@ -84,5 +105,6 @@ int		input_manager(int keycode, t_data *data);
 int		updater(t_data *data);
 int		cam_init(t_data *data);
 void	raycaster(t_data *data);
+void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
 #endif
 
