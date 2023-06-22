@@ -6,11 +6,22 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/19 18:23:02 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:59:24 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	minimap_init(t_data *data)
+{
+	t_mini	minimap;
+
+	minimap.starty = HEIGHT / 30;
+	minimap.startx = WIDTH / 40;
+	minimap.endx = minimap.startx + (WIDTH / 25) * 2;
+	minimap.endy = minimap.starty + (WIDTH / 25) * 2;
+	data->minimap = minimap;
+}
 
 void	image_init(t_data *data)
 {
@@ -29,6 +40,7 @@ int	init_game(t_data *data, char **argv)
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	image_init(data);
+	minimap_init(data);
 	game_starter(data);
 	return (0);
 }

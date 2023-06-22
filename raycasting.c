@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/21 17:00:49 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:20:59 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ray_calculator(t_ray *ray)
 	else
 	{
 		ray->stepx = 1;
-		ray->side_distx = (ray->posx + 1.0 - ray->mapx) * ray->delta_distx;
+		ray->side_distx = (ray->mapx + 1.0 - ray->posx) * ray->delta_distx;
 	}
 	if (ray->diry < 0)
 	{
@@ -32,7 +32,7 @@ void	ray_calculator(t_ray *ray)
 	else
 	{
 		ray->stepy = 1;
-		ray->side_disty = (ray->posy + 1.0 - ray->mapy) * ray->delta_disty;
+		ray->side_disty = (ray->mapy + 1.0 - ray->posy) * ray->delta_disty;
 	}
 }
 
@@ -102,7 +102,7 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 	}
 	while (crop_up < (col_h - crop_down))
 	{
-		my_mlx_pixel_put(&data->screen, col, y, 4363463);
+		texture_chooser(ray, &data->screen, col, y);
 		y++;
 		crop_up++;
 	}

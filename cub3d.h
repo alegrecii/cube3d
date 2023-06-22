@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/21 17:17:26 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:53:14 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 # define S_KEY 115
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
-/* # define WIDTH 1920
-# define HEIGHT 1080 */
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1920
+# define HEIGHT 1080
+/* # define WIDTH 640
+# define HEIGHT 480 */
 # define SPEED 0.1
 # define ROT 0.05
 # define ESC 65307
@@ -80,6 +80,14 @@ typedef struct s_cam
 	double	camy;
 }		t_cam;
 
+typedef struct s_mini
+{
+	int	starty;
+	int	startx;
+	int	endx;
+	int	endy;
+}		t_mini;
+
 typedef struct s_data
 {
 	void			*win;
@@ -91,6 +99,7 @@ typedef struct s_data
 	unsigned int	floor;
 	t_img			screen;
 	t_cam			cam_state;
+	t_mini			minimap;
 }		t_data;
 
 
@@ -106,5 +115,8 @@ int		updater(t_data *data);
 int		cam_init(t_data *data);
 void	raycaster(t_data *data);
 void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
+void	texture_chooser(t_ray *ray, t_img *screen, int col, int y);
+void	minimap_manager(t_data *data);
+
 #endif
 

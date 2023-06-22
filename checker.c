@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:17:59 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/21 17:14:22 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:02:33 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cam_setter_helper(char c, t_cam *cam)
 		cam->dirx = 1;
 		cam->diry = 0;
 		cam->camx = 0;
-		cam->camy = FOV;
+		cam->camy = -FOV;
 	}
 	if (c == 'W')
 	{
@@ -39,7 +39,7 @@ int	cam_setter(char c, int y, int x, t_cam *cam)
 	{
 		cam->dirx = 0;
 		cam->diry = -1;
-		cam->camx = FOV;
+		cam->camx = -FOV;
 		cam->camy = 0;
 	}
 	if (c == 'S')

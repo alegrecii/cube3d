@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/21 14:04:03 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:51:48 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	updater(t_data *data)
 {
 	draw_background(data);
 	raycaster(data);
+	minimap_manager(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
 	return (0);
 }
