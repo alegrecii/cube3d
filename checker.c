@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:17:59 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/22 15:02:33 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:48:00 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	cam_setter_helper(char c, t_cam *cam)
 		cam->dirx = 1;
 		cam->diry = 0;
 		cam->camx = 0;
-		cam->camy = -FOV;
+		cam->camy = FOV;
 	}
 	if (c == 'W')
 	{
 		cam->dirx = -1;
 		cam->diry = 0;
 		cam->camx = 0;
-		cam->camy = FOV;
+		cam->camy = -FOV;
 	}
 }
 
@@ -39,14 +39,14 @@ int	cam_setter(char c, int y, int x, t_cam *cam)
 	{
 		cam->dirx = 0;
 		cam->diry = -1;
-		cam->camx = -FOV;
+		cam->camx = FOV;
 		cam->camy = 0;
 	}
 	if (c == 'S')
 	{
 		cam->dirx = 0;
 		cam->diry = 1;
-		cam->camx = FOV;
+		cam->camx = -FOV;
 		cam->camy = 0;
 	}
 	cam_setter_helper(c, cam);

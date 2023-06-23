@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/22 16:53:14 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:37:02 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_mini
 	int	startx;
 	int	endx;
 	int	endy;
+	int	l;
 }		t_mini;
 
 typedef struct s_data
@@ -106,6 +107,7 @@ typedef struct s_data
 int		map_conversion(t_data *data, char *path);
 int		check_arg(char **str);
 void	ft_free_all_map(char **all_map);
+int		counter_map(char **all_map, int i);
 void	save_path_text(t_data *data, char **all_map);
 void	save_fc_color(t_data *data, char **all_map);
 int		super_exit(t_data *data);

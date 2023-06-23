@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/22 15:37:12 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:35:48 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int	check_wall(t_data *data, int keycode)
 {
-	if (keycode == W_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.diry * (SPEED + 0.1))][(int)(data->cam_state.posx + data->cam_state.dirx * (SPEED + 0.1))] != '1')
+	double wall_dist;
+
+	wall_dist = 0.1;
+	if (keycode == W_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.dirx * (SPEED + wall_dist))] != '1')
 		return(1);
-	if (keycode == S_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.diry * (SPEED + 0.1))][(int)(data->cam_state.posx - data->cam_state.dirx * (SPEED + 0.1))] != '1')
+	if (keycode == S_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.dirx * (SPEED + wall_dist))] != '1')
 		return(1);
-	if (keycode == A_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.dirx * (SPEED + 0.1))][(int)(data->cam_state.posx - data->cam_state.diry * (SPEED + 0.1))] != '1')
+	if (keycode == D_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.diry * (SPEED + wall_dist))] != '1')
 		return(1);
-	if (keycode == D_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.dirx * (SPEED + 0.1))][(int)(data->cam_state.posx + data->cam_state.diry * (SPEED + 0.1))] != '1')
+	if (keycode == A_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.diry * (SPEED + wall_dist))] != '1')
 		return(1);
 	return(0);
 }
@@ -33,7 +36,7 @@ void	rotator(int keycode, t_data *data)
 	camx = data->cam_state.camx;
 	dirx = data->cam_state.dirx;
 
-	if (keycode == ARROW_LEFT)
+	if (keycode == ARROW_RIGHT)
 	{
 		data->cam_state.dirx = data->cam_state.dirx * \
 		cos(ROT) - data->cam_state.diry * sin(ROT);
@@ -44,7 +47,7 @@ void	rotator(int keycode, t_data *data)
 		data->cam_state.camy = camx * sin(ROT) + \
 		data->cam_state.camy * cos(ROT);
 	}
-	if (keycode == ARROW_RIGHT)
+	if (keycode == ARROW_LEFT)
 	{
 		data->cam_state.dirx = data->cam_state.dirx * \
 		cos(-ROT) - data->cam_state.diry * sin(-ROT);
@@ -70,12 +73,12 @@ int	input_manager(int keycode, t_data *data)
 		data->cam_state.posx -= data->cam_state.dirx * SPEED;
 		data->cam_state.posy -= data->cam_state.diry * SPEED;
 	}
-	if (keycode == A_KEY && check_wall(data, keycode))
+	if (keycode == D_KEY && check_wall(data, keycode))
 	{
 		data->cam_state.posx -= data->cam_state.diry * SPEED;
 		data->cam_state.posy += data->cam_state.dirx * SPEED;
 	}
-	if (keycode == D_KEY && check_wall(data, keycode))
+	if (keycode == A_KEY && check_wall(data, keycode))
 	{
 		data->cam_state.posx += data->cam_state.diry * SPEED;
 		data->cam_state.posy -= data->cam_state.dirx * SPEED;

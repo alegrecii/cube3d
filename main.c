@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/22 16:59:24 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:16:11 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	minimap_init(t_data *data)
 {
 	t_mini	minimap;
 
+	minimap.l = (WIDTH / 25) * 2;
 	minimap.starty = HEIGHT / 30;
 	minimap.startx = WIDTH / 40;
-	minimap.endx = minimap.startx + (WIDTH / 25) * 2;
-	minimap.endy = minimap.starty + (WIDTH / 25) * 2;
+	minimap.endx = minimap.startx + minimap.l;
+	minimap.endy = minimap.starty + minimap.l;
 	data->minimap = minimap;
+
 }
 
 void	image_init(t_data *data)

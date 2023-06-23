@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/22 12:20:59 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:36:26 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 		y++;
 		crop_up++;
 	}
-	(void)crop_down;
 }
 
 void	raycaster(t_data *data)
@@ -123,5 +122,4 @@ void	raycaster(t_data *data)
 		col_drawer(data, &ray, col, 0);
 		col++;
 	}
-	(void)ray;
 }
