@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/23 12:37:02 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:08:25 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define ARROW_RIGHT 65363
 # define WIDTH 1920
 # define HEIGHT 1080
+# define MINI_CONST 7.3
 /* # define WIDTH 640
 # define HEIGHT 480 */
 # define SPEED 0.1
@@ -101,6 +102,10 @@ typedef struct s_data
 	t_img			screen;
 	t_cam			cam_state;
 	t_mini			minimap;
+	t_img			no;
+	t_img			so;
+	t_img			ea;
+	t_img			we;
 }		t_data;
 
 
@@ -109,6 +114,7 @@ int		check_arg(char **str);
 void	ft_free_all_map(char **all_map);
 int		counter_map(char **all_map, int i);
 void	save_path_text(t_data *data, char **all_map);
+char	*texture_cleaner(char *orig);
 void	save_fc_color(t_data *data, char **all_map);
 int		super_exit(t_data *data);
 void	game_starter(t_data *data);

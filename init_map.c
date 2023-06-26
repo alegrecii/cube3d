@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/23 15:35:55 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:44:55 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	save_map(t_data *data, char **all_map)
 		j = 0;
 		while (all_map[i][j])
 		{
-			if (all_map[i][j] == '1' && all_map[i][j + 1] == '1')
+			if (all_map[i][j] == '1' && all_map[i][j + 1] == '1' && \
+			!ft_strchr(all_map[i], ',') && !ft_strchr(all_map[i], '/'))
 			{
 				save_map_helper(data, all_map, i);
 				return ;

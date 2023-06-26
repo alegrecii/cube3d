@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:07 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/23 18:27:46 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:08:11 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	draw_blocks(t_data *data, int y, int x)
 	double	addx;
 	double	addy;
 
-	addy = data->cam_state.posy - 7.3;
+	addy = data->cam_state.posy - MINI_CONST;
 	while (y < (data->minimap.endy - 3))
 	{
-		addx = data->cam_state.posx - 7.3;
+		addx = data->cam_state.posx - MINI_CONST;
 		x = data->minimap.startx + 3;
 		while (x < (data->minimap.endx - 3))
 		{

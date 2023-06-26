@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:35:48 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:37:07 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rotator(int keycode, t_data *data)
 
 int	input_manager(int keycode, t_data *data)
 {
-	printf("%d\n", keycode);
+	//printf("%d\n", keycode);
 	if (keycode == W_KEY && check_wall(data, keycode))
 	{
 		data->cam_state.posx += data->cam_state.dirx * SPEED;

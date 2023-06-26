@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/23 12:16:11 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:41:16 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ void	minimap_init(t_data *data)
 
 }
 
+void	texture_init(t_data *data, int dir, t_img *i)
+{
+	(void) dir;
+	int tmp;
+
+	tmp = 0;
+/* 	i->img = mlx_new_image(data->mlx, 1, 1); */
+	i->img = mlx_xpm_file_to_image(data->mlx, data->path_text[dir], &tmp, &tmp);
+	if (!i->img)
+		return ;
+	i->addr = mlx_get_data_addr(i->img, &i->bits_per_pixel, \
+	&i->line_length, &i->endian);
+}
+
 void	image_init(t_data *data)
 {
 	t_img	screen;
@@ -33,6 +47,10 @@ void	image_init(t_data *data)
 	screen.addr = mlx_get_data_addr(screen.img, &screen.bits_per_pixel, \
 	&screen.line_length, &screen.endian);
 	data->screen = screen;
+	texture_init(data, 0, &data->no);
+	texture_init(data, 1, &data->so);
+	texture_init(data, 2, &data->we);
+	texture_init(data, 3, &data->ea);
 }
 
 int	init_game(t_data *data, char **argv)

@@ -9,7 +9,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/cub3d",
-        "args": ["maps/nord.cub"],
+        "args": ["maps/square.cub"],
         "preLaunchTask": "",
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",

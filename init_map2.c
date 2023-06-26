@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:22:38 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/19 18:18:45 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:57:18 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	save_nord_path(t_data *data, char **all_map)
 		{
 			if (all_map[i][j] == 'N' && all_map[i][j + 1] == 'O')
 			{
-				data->path_text[0] = ft_strdup(all_map[i]);
+				data->path_text[0] = texture_cleaner(all_map[i]);
 				return ;
 			}
 			j++;
@@ -47,7 +47,7 @@ void	save_south_path(t_data *data, char **all_map)
 		{
 			if (all_map[i][j] == 'S' && all_map[i][j + 1] == 'O')
 			{
-				data->path_text[1] = ft_strdup(all_map[i]);
+				data->path_text[1] = texture_cleaner(all_map[i]);
 				return ;
 			}
 			j++;
@@ -69,7 +69,7 @@ void	save_west_path(t_data *data, char **all_map)
 		{
 			if (all_map[i][j] == 'W' && all_map[i][j + 1] == 'E')
 			{
-				data->path_text[2] = ft_strdup(all_map[i]);
+				data->path_text[2] = texture_cleaner(all_map[i]);
 				return ;
 			}
 			j++;
@@ -91,7 +91,7 @@ void	save_east_path(t_data *data, char **all_map)
 		{
 			if (all_map[i][j] == 'E' && all_map[i][j + 1] == 'A')
 			{
-				data->path_text[3] = ft_strdup(all_map[i]);
+				data->path_text[3] = texture_cleaner(all_map[i]);
 				return ;
 			}
 			j++;
