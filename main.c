@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 14:41:16 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:08:37 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,13 @@ void	minimap_init(t_data *data)
 	minimap.endx = minimap.startx + minimap.l;
 	minimap.endy = minimap.starty + minimap.l;
 	data->minimap = minimap;
-
 }
 
 void	texture_init(t_data *data, int dir, t_img *i)
 {
-	(void) dir;
-	int tmp;
+	int	tmp;
 
 	tmp = 0;
-/* 	i->img = mlx_new_image(data->mlx, 1, 1); */
 	i->img = mlx_xpm_file_to_image(data->mlx, data->path_text[dir], &tmp, &tmp);
 	if (!i->img)
 		return ;
@@ -61,6 +58,7 @@ int	init_game(t_data *data, char **argv)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	image_init(data);
 	minimap_init(data);
+	mlx_mouse_hide(data->mlx, data->win);
 	game_starter(data);
 	return (0);
 }

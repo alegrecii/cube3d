@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 15:08:25 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:11:52 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define HEIGHT 480 */
 # define SPEED 0.1
 # define ROT 0.05
+# define ROT_MOUSE 0.03
 # define ESC 65307
 # define FOV 0.66
 
@@ -125,6 +126,7 @@ void	raycaster(t_data *data);
 void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
 void	texture_chooser(t_ray *ray, t_img *screen, int col, int y);
 void	minimap_manager(t_data *data);
+int		mouse_move(int x, int y, t_data *data);
 
 #endif
 

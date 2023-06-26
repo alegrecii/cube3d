@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/23 19:46:59 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:04:36 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	updater(t_data *data)
 	raycaster(data);
 	minimap_manager(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
+	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
