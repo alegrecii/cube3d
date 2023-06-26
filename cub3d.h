@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 17:11:52 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 20:47:10 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define MINI_CONST 7.3
+# define PITCH 100
 /* # define WIDTH 640
 # define HEIGHT 480 */
 # define SPEED 0.1
@@ -51,6 +52,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		w;
+	int		h;
 }				t_img;
 
 typedef struct s_ray
@@ -69,6 +72,7 @@ typedef struct s_ray
 	int		side;
 	int		mapx;
 	int		mapy;
+	int		col;
 }		t_ray;
 
 
@@ -107,6 +111,7 @@ typedef struct s_data
 	t_img			so;
 	t_img			ea;
 	t_img			we;
+	t_ray			*ray;
 }		t_data;
 
 
@@ -124,7 +129,9 @@ int		updater(t_data *data);
 int		cam_init(t_data *data);
 void	raycaster(t_data *data);
 void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
-void	texture_chooser(t_ray *ray, t_img *screen, int col, int y);
+void	draw_texture(int crop_up, int crop_down, int y, t_data *data);
+t_img	texture_chooser(t_ray *ray, t_data *data);
+int		texture_calculator(t_ray *ray, t_data *data);
 void	minimap_manager(t_data *data);
 int		mouse_move(int x, int y, t_data *data);
 

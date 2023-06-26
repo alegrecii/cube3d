@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/26 16:03:50 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:58:14 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,14 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 		crop_down = 0;
 		crop_up = 0;
 	}
-	while (crop_up < (col_h - crop_down))
+	ray->col = col;
+	data->ray = ray;
+	draw_texture(crop_up, crop_down, y, data);
+	/* while (crop_up < (col_h - crop_down))
 	{
-		texture_chooser(ray, &data->screen, col, y);
 		y++;
 		crop_up++;
-	}
+	} */
 }
 
 void	raycaster(t_data *data)
@@ -116,7 +118,6 @@ void	raycaster(t_data *data)
 	col = 0;
 	while (col < WIDTH)
 	{
-
 		ray = ray_init(data, col);
 		ray_launcher(data, &ray);
 		col_drawer(data, &ray, col, 0);

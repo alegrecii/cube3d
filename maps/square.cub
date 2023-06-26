@@ -1,7 +1,7 @@
-NO ./textures/choco.xpm
-SO ./textures/fire.xpm
-WE ./textures/red.xpm
-EA ./textures/bricks.xpm
+NO ./textures/wall_2.xpm
+SO ./textures/wall_3.xpm
+WE ./textures/wall_4.xpm
+EA ./textures/wall_1.xpm
 
 C 173,216,230
 F 157,232,139

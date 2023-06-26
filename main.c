@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 17:08:37 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/26 20:12:45 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	minimap_init(t_data *data)
 
 void	texture_init(t_data *data, int dir, t_img *i)
 {
-	int	tmp;
-
-	tmp = 0;
-	i->img = mlx_xpm_file_to_image(data->mlx, data->path_text[dir], &tmp, &tmp);
+	i->img = mlx_xpm_file_to_image(data->mlx, data->path_text[dir], &i->w, &i->h);
 	if (!i->img)
 		return ;
 	i->addr = mlx_get_data_addr(i->img, &i->bits_per_pixel, \
