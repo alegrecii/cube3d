@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updater.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/26 18:18:01 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:32:07 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	updater(t_data *data)
 	raycaster(data);
 	minimap_manager(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
-	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
+	if (data->p > 0)
+		mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }

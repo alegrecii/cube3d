@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 20:47:10 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:24:12 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define A_KEY 97
 # define W_KEY 119
 # define S_KEY 115
+# define P_KEY 112
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
 # define WIDTH 1920
@@ -104,6 +105,7 @@ typedef struct s_data
 	char			**fc_color;
 	unsigned int	ceiling;
 	unsigned int	floor;
+	int				p;
 	t_img			screen;
 	t_cam			cam_state;
 	t_mini			minimap;

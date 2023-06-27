@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:25:14 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 17:07:51 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:25:28 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	move_mouse_right(t_data *data)
 
 int	mouse_move(int x, int y, t_data *data)
 {
-	if (x > WIDTH / 2)
+	if (x > WIDTH / 2 && data->p > 0)
 		move_mouse_right(data);
-	else if (x < WIDTH / 2)
+	else if (x < WIDTH / 2 && data->p > 0)
 		move_mouse_left(data);
 	(void)y;
 	return (0);

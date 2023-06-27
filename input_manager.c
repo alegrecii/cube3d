@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/26 11:37:07 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:31:00 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	rotator(int keycode, t_data *data)
 
 int	input_manager(int keycode, t_data *data)
 {
-	//printf("%d\n", keycode);
 	if (keycode == W_KEY && check_wall(data, keycode))
 	{
 		data->cam_state.posx += data->cam_state.dirx * SPEED;
@@ -83,8 +82,16 @@ int	input_manager(int keycode, t_data *data)
 		data->cam_state.posx += data->cam_state.diry * SPEED;
 		data->cam_state.posy -= data->cam_state.dirx * SPEED;
 	}
+	if (keycode == P_KEY)
+	{
+		data->p *= -1;
+		if (data->p < 0)
+			mlx_mouse_show(data->mlx, data->win);
+		else
+			mlx_mouse_hide(data->mlx, data->win);
+	}
+
 	rotator(keycode, data);
-	//makeprintf("x :%f, y:%f\n", data->cam_state.posx, data->cam_state.posy);
 	if (keycode == ESC)
 		super_exit(data);
 	return (0);
