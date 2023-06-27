@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/27 11:26:34 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:58:45 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	minimap_init(t_data *data)
 	data->minimap = minimap;
 }
 
-void	texture_init(t_data *data, int dir, t_img *i)
+void	texture_init(t_data *data, char *path, t_img *i)
 {
-	i->img = mlx_xpm_file_to_image(data->mlx, data->path_text[dir], &i->w, &i->h);
+	i->img = mlx_xpm_file_to_image(data->mlx, path, &i->w, &i->h);
 	if (!i->img)
 		return ;
 	i->addr = mlx_get_data_addr(i->img, &i->bits_per_pixel, \
@@ -41,10 +41,11 @@ void	image_init(t_data *data)
 	screen.addr = mlx_get_data_addr(screen.img, &screen.bits_per_pixel, \
 	&screen.line_length, &screen.endian);
 	data->screen = screen;
-	texture_init(data, 0, &data->no);
-	texture_init(data, 1, &data->so);
-	texture_init(data, 2, &data->we);
-	texture_init(data, 3, &data->ea);
+	texture_init(data, data->path_text[0], &data->no);
+	texture_init(data, data->path_text[1], &data->so);
+	texture_init(data, data->path_text[2], &data->we);
+	texture_init(data, data->path_text[3], &data->ea);
+	texture_init(data, "./textures/door.xpm", &data->door);
 }
 
 int	init_game(t_data *data, char **argv)

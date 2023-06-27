@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/27 15:30:01 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:46:26 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ t_ray	ray_init(t_data *data, int col)
 	ray.delta_disty = sqrt(1 + (ray.dirx * ray.dirx) / (ray.diry * ray.diry));
 	ray.mapx = (int)ray.posx;
 	ray.mapy = (int)ray.posy;
+	ray.is_door = 0;
 	ray_calculator(&ray);
 	return (ray);
 }
 
 void	ray_launcher(t_data *data, t_ray *ray)
 {
-	while (data->map[ray->mapy][ray->mapx] == '0')
+	while (data->map[ray->mapy][ray->mapx] == '0' || data->map[ray->mapy][ray->mapx] == 'O')
 	{
 		if (ray->side_distx < ray->side_disty)
 		{
@@ -71,6 +72,8 @@ void	ray_launcher(t_data *data, t_ray *ray)
 			ray->side = 1;
 		}
 	}
+	if (data->map[ray->mapy][ray->mapx] == 'D')
+		ray->is_door = 1;
 	if (ray->side == 0)
 		ray->len = fabs((ray->mapx - ray->posx + \
 		(1 - ray->stepx) / 2) / ray->dirx);
@@ -98,6 +101,8 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 		y = ((HEIGHT - col_h) / 2);
 	ray->col = col;
 	data->ray = ray;
+	data->col_h = col_h;
+	data->tex_x = texture_calculator(ray, data);
 	draw_texture(crop_up, crop_down, y, data);
 	/* while (crop_up < (col_h - crop_down))
 	{

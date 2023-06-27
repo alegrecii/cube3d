@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/27 14:59:47 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:56:42 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define W_KEY 119
 # define S_KEY 115
 # define P_KEY 112
+# define E_KEY 101
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
 # define WIDTH 1920
@@ -74,6 +75,7 @@ typedef struct s_ray
 	int		mapx;
 	int		mapy;
 	int		col;
+	int		is_door;
 }		t_ray;
 
 
@@ -106,6 +108,8 @@ typedef struct s_data
 	unsigned int	ceiling;
 	unsigned int	floor;
 	int				p;
+	int				col_h;
+	int				tex_x;
 	t_img			screen;
 	t_cam			cam_state;
 	t_mini			minimap;
@@ -113,6 +117,7 @@ typedef struct s_data
 	t_img			so;
 	t_img			ea;
 	t_img			we;
+	t_img			door;
 	t_ray			*ray;
 }		t_data;
 
