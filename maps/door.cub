@@ -1,7 +1,7 @@
-NO ./textures/bricks.xpm
-SO ./textures/fire.xpm
-WE ./textures/red.xpm
-EA ./textures/choco.xpm
+NO ./textures/ale3.xpm
+SO ./textures/marco1.xpm
+WE ./textures/ale1.xpm
+EA ./textures/andre.xpm
 
 C 173,216,230
 F 191,232,119
