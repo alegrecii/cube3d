@@ -1,6 +1,6 @@
-NO ./textures/wall_2.xpm
+NO ./textures/tnt.xpm
 SO ./textures/wall_3.xpm
-WE ./textures/wall_4.xpm
+WE ./textures/tnt.xpm
 EA ./textures/wall_1.xpm
 
 C 173,216,230

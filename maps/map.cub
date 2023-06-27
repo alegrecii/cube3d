@@ -1,6 +1,6 @@
-NO ./textures/choco.xpm
-SO ./textures/fire.xpm
-WE ./textures/red.xpm
+NO ./textures/bricks.xpm
+SO ./textures/bricks.xpm
+WE ./textures/bricks.xpm
 EA ./textures/bricks.xpm
 
 C 173,216,230

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/26 20:41:15 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:54:41 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 int	color_chooser(t_img	i, int tex_y, t_data *data, t_ray *ray)
 {
 	int	tex_x;
+	int	color;
 
 	tex_x = texture_calculator(ray, data);
 	if (tex_x >= 0 && tex_x < i.w && tex_y >= 0 && tex_y < i.h)
-		return (*(int *)i.addr + (4 * i.w * tex_y) + (4 * tex_x));
-	return (0);
+		color = *(int *)(i.addr + (4 * i.w * tex_y) + (4 * tex_x));
+/* 	if (ray->side == 1)
+		color = (color >> 1) & 8355711; */
+	return (color);
 }
 
 /* int	draw_texture(t_data *data, t_ray *ray, int flag)
@@ -52,11 +55,12 @@ void	draw_texture(int crop_up, int crop_down, int y, t_data *data)
 	double	step;
 	double	tex_pos;
 	int		tex_y;
-
+//     (-640		+			53)		* 0.301886
+// 0 - 100 - 540 + ((540/ 5.07468)/2) * 0.301886
 	i = texture_chooser(data->ray, data);
-	step = 1.0 * i.w / abs((int)(HEIGHT / data->ray->len));
-	tex_pos = (crop_up - PITCH - HEIGHT / 2 + data->ray->len / 2) * step;
-	while (crop_up < (abs((int)(HEIGHT / data->ray->len) - crop_down)))
+	step = 1.0 * i.h / abs((int)(HEIGHT / data->ray->len));
+	tex_pos = (crop_up - PITCH - HEIGHT / 2 + abs((int)(HEIGHT / data->ray->len)) / 2) * step;
+	while (crop_up < (abs((int)(HEIGHT / data->ray->len)) - crop_down))
 	{
 		tex_y = (int)tex_pos & (i.h - 1);
 		tex_pos += step;
@@ -75,7 +79,7 @@ int	texture_calculator(t_ray *ray, t_data *data)
 
 	i = texture_chooser(ray, data);
 	if (ray->side == 0)
-		hit_wall = ray->posx + ray->len * ray->diry;
+		hit_wall = ray->posy + ray->len * ray->diry;
 	else
 		hit_wall = ray->posx + ray->len * ray->dirx;
 	hit_wall = hit_wall - floor(hit_wall);
