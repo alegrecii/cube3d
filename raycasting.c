@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/27 11:20:22 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:30:01 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,7 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 		crop_down = crop_up + 1;
 	}
 	else
-	{
 		y = ((HEIGHT - col_h) / 2);
-		crop_down = 0;
-		crop_up = 0;
-	}
 	ray->col = col;
 	data->ray = ray;
 	draw_texture(crop_up, crop_down, y, data);

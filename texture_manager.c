@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/27 14:54:41 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:35:33 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_texture(int crop_up, int crop_down, int y, t_data *data)
 	tex_pos = (crop_up - PITCH - HEIGHT / 2 + abs((int)(HEIGHT / data->ray->len)) / 2) * step;
 	while (crop_up < (abs((int)(HEIGHT / data->ray->len)) - crop_down))
 	{
-		tex_y = (int)tex_pos & (i.h - 1);
+		tex_y = (int)(((double)crop_up / (double)abs((int)(HEIGHT / data->ray->len)) * i.h));
 		tex_pos += step;
 		my_mlx_pixel_put(&data->screen, data->ray->col, y, color_chooser(i, tex_y, data, data->ray));
 		y++;
