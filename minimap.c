@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:07 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/26 15:08:11 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:18:49 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	draw_blocks(t_data *data, int y, int x)
 		{
 			if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == '0')
 				my_mlx_pixel_put(&data->screen, x, y,  data->ceiling);
+			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'D')
+				my_mlx_pixel_put(&data->screen, x, y,  0xff0000);
+			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'O')
+				my_mlx_pixel_put(&data->screen, x, y,  0x0000ff);
 			else
 				my_mlx_pixel_put(&data->screen, x, y, 0x00ff00);
 			x++;

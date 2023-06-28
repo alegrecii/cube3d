@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 00:38:25 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:11:16 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int	color_chooser(t_img	i, int tex_y, t_data *data)
 		color = *(int *)(i.addr + (4 * i.w * tex_y) + (4 * tex_x));
 	color = color_darker(color, data);
 	(void)c;
-	/*while (c < data->ray->len)
+	/* while (c < data->ray->len)
 	{
 		color = (color >> 1) & 8355711;
 		c++;
-	}*/
+	} */
 	return (color);
 }
 
