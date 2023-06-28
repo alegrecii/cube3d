@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 12:11:16 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:32:53 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	color_darker(int color, t_data *data)
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
 
-
 	if (data->ray->len < 2)
 		return (color);
-	r /= (data->ray->len) / 2;
-	g /=data->ray->len / 2;
-	b /=data->ray->len / 2;
+	r /= data->ray->len / 2;
+	g /= data->ray->len / 2;
+	b /= data->ray->len / 2;
 	(void)data;
 	color = (r << 16) | (g << 8) | b;
 	return (color);
@@ -37,33 +36,13 @@ int	color_chooser(t_img	i, int tex_y, t_data *data)
 {
 	int		tex_x;
 	int		color;
-	double	c;
-
-	c = 5;
 
 	tex_x = data->tex_x;
 	if (tex_x >= 0 && tex_x < i.w && tex_y >= 0 && tex_y < i.h)
 		color = *(int *)(i.addr + (4 * i.w * tex_y) + (4 * tex_x));
 	color = color_darker(color, data);
-	(void)c;
-	/* while (c < data->ray->len)
-	{
-		color = (color >> 1) & 8355711;
-		c++;
-	} */
 	return (color);
 }
-
-/* int	draw_texture(t_data *data, t_ray *ray, int flag)
-{
-	double	hit_wall;
-
-	if (flag == 3 || flag == 2)
-		hit_wall = ray->posx + ray->len * ray->diry;
-	else
-		hit_wall = ray->posx + ray->len * ray->dirx;
-	hit_wall = hit_wall - floor(hit_wall);
-} */
 
 t_img	texture_chooser(t_ray *ray, t_data *data)
 {
@@ -118,15 +97,3 @@ int	texture_calculator(t_ray *ray, t_data *data)
 		tex_x = i.w - tex_x - 1;
 	return (tex_x);
 }
-
-/* void	texture_chooser(t_ray *ray, t_data *data, int crop_up, int crop_down)
-{
-	if (ray->side == 0 && ray->dirx > 0) //E
-		my_mlx_pixel_put(&data->screen, col, y, draw_texture(data, ray, 3));
-	if (ray->side == 0 && ray->dirx < 0) //W
-		my_mlx_pixel_put(&data->screen, col, y, draw_texture(data, ray, 2));
-	if (ray->side == 1 && ray->diry > 0) //S
-		my_mlx_pixel_put(&data->screen, col, y, draw_texture(data, ray, 1));
-	if (ray->side == 1 && ray->diry < 0) //N
-		my_mlx_pixel_put(&data->screen, col, y, draw_texture(data, ray, 0));
-} */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 01:15:45 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:51:09 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,10 @@ void	rotator(int keycode, t_data *data)
 
 	if (keycode == ARROW_RIGHT)
 	{
-		data->cam_state.dirx = data->cam_state.dirx * \
-		cos(ROT) - data->cam_state.diry * sin(ROT);
-		data->cam_state.diry = dirx * sin(ROT) + \
-		data->cam_state.diry * cos(ROT);
-		data->cam_state.camx = data->cam_state.camx * \
-		cos(ROT) - data->cam_state.camy * sin(ROT);
-		data->cam_state.camy = camx * sin(ROT) + \
-		data->cam_state.camy * cos(ROT);
+		data->cam_state.dirx = data->cam_state.dirx * cos(ROT) - data->cam_state.diry * sin(ROT);
+		data->cam_state.diry = dirx * sin(ROT) + data->cam_state.diry * cos(ROT);
+		data->cam_state.camx = data->cam_state.camx * cos(ROT) - data->cam_state.camy * sin(ROT);
+		data->cam_state.camy = camx * sin(ROT) + data->cam_state.camy * cos(ROT);
 	}
 	if (keycode == ARROW_LEFT)
 	{

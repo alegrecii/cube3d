@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:17:59 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/23 15:48:00 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:54:59 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	cam_setter(char c, int y, int x, t_cam *cam)
 {
 	cam->posx = (double)x + 0.5;
 	cam->posy = (double)y + 0.5;
-	//printf("x :%f, y:%f\n",cam->posx, cam->posy);
 	if (c == 'N')
 	{
 		cam->dirx = 0;

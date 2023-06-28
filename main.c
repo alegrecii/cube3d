@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/27 16:58:45 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:44:17 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	image_init(t_data *data)
 	texture_init(data, data->path_text[2], &data->we);
 	texture_init(data, data->path_text[3], &data->ea);
 	texture_init(data, "./textures/door.xpm", &data->door);
+	init_fire(data);
 }
 
 int	init_game(t_data *data, char **argv)

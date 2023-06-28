@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/27 23:49:37 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:44:06 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_ray
 	int		is_door;
 }		t_ray;
 
-
 typedef struct s_cam
 {
 	double	posx;
@@ -118,6 +117,7 @@ typedef struct s_data
 	t_img			ea;
 	t_img			we;
 	t_img			door;
+	t_img			*fire;
 	t_ray			*ray;
 }		t_data;
 
@@ -141,6 +141,9 @@ t_img	texture_chooser(t_ray *ray, t_data *data);
 int		texture_calculator(t_ray *ray, t_data *data);
 void	minimap_manager(t_data *data);
 int		mouse_move(int x, int y, t_data *data);
+void	texture_init(t_data *data, char *path, t_img *i);
+void	animation_manager(t_data *data);
+void	init_fire(t_data *data);
 
 #endif
 

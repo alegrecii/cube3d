@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/27 16:46:26 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:34:58 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,6 @@ void	col_drawer(t_data *data, t_ray *ray, int col, int y)
 	data->col_h = col_h;
 	data->tex_x = texture_calculator(ray, data);
 	draw_texture(crop_up, crop_down, y, data);
-	/* while (crop_up < (col_h - crop_down))
-	{
-		y++;
-		crop_up++;
-	} */
 }
 
 void	raycaster(t_data *data)
@@ -125,8 +120,4 @@ void	raycaster(t_data *data)
 		col++;
 	}
 	col = 0;
-/* 	while(data->no.addr[col])
-	{
-
-	} */
 }

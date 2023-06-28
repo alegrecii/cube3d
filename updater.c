@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updater.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/27 11:32:07 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:59:58 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	updater(t_data *data)
 	draw_background(data);
 	raycaster(data);
 	minimap_manager(data);
+	animation_manager(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen.img, 0, 0);
 	if (data->p > 0)
 		mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
