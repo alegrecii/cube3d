@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 17:32:53 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:53:32 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	color_darker(int color, t_data *data)
+int	color_darker(int color, double len)
 {
 	int	r;
 	int	g;
@@ -21,13 +21,11 @@ int	color_darker(int color, t_data *data)
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
-
-	if (data->ray->len < 2)
+	if (len < 1)
 		return (color);
-	r /= data->ray->len / 2;
-	g /= data->ray->len / 2;
-	b /= data->ray->len / 2;
-	(void)data;
+	r /= len / 1;
+	g /= len / 1;
+	b /= len / 1;
 	color = (r << 16) | (g << 8) | b;
 	return (color);
 }
@@ -40,7 +38,7 @@ int	color_chooser(t_img	i, int tex_y, t_data *data)
 	tex_x = data->tex_x;
 	if (tex_x >= 0 && tex_x < i.w && tex_y >= 0 && tex_y < i.h)
 		color = *(int *)(i.addr + (4 * i.w * tex_y) + (4 * tex_x));
-	color = color_darker(color, data);
+	color = color_darker(color, data->ray->len);
 	return (color);
 }
 

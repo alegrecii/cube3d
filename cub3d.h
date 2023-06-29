@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/28 17:44:06 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:30:55 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
 void	draw_texture(int crop_up, int crop_down, int y, t_data *data);
 t_img	texture_chooser(t_ray *ray, t_data *data);
 int		texture_calculator(t_ray *ray, t_data *data);
+int		color_darker(int color, double len);
 void	minimap_manager(t_data *data);
 int		mouse_move(int x, int y, t_data *data);
 void	texture_init(t_data *data, char *path, t_img *i);

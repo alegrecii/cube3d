@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   updater.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 17:59:58 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:42:14 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color)
+void my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color)
 {
-	char	*dst;
+	char *dst;
 
-	dst = screen->addr + (y * screen->line_length + x \
-	* (screen->bits_per_pixel / 8));
+	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 17:35:40 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/28 20:02:20 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:21:38 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,26 @@ void	init_fire(t_data *data)
 
 void	animation_manager(t_data *data)
 {
-	static int	i = 1;
-	int	color;
-	int	x;
-	int	y;
-	int posy = 100;
-	int	posx;
+	static int	i = 0;
+	int			color;
+	int			x;
+	int			y;
 
 	y = 0;
 	color = 0;
-	while (y < 1100)
+	while (y < 1000)
 	{
 		x = 0;
-		posx = 100;
-		while (x < 1100)
+		while (x < 1000)
 		{
-			color = *(int *)(data->fire[0].addr + (4 * data->fire[0].w * x) + (4 * y));
+			color = *(int *)(data->fire[i].addr + (4 * data->fire[i].w * x) + (4 * y));
 			if (color >= 0)
-				my_mlx_pixel_put(&data->screen, posy, posx,color);
-			posx++;
+				my_mlx_pixel_put(&data->screen, y + 900, x,color);
 			x++;
 		}
 		y++;
-		posy++;
 	}
-	//i++;
+	i++;
 	if (i >= 19)
-		i = 1;
+		i = 0;
 }

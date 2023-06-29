@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/28 15:51:09 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:59:59 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ int	input_manager(int keycode, t_data *data)
 		else
 			mlx_mouse_hide(data->mlx, data->win);
 	}
-
 	rotator(keycode, data);
 	if (keycode == ESC)
 		super_exit(data);
