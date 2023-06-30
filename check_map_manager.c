@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:41:25 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:17:01 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:55:12 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	fill_first_last(char **check_map, t_data *data)
 	i = 0;
 	while (i <= len)
 	{
-		check_map[i] = ft_calloc(sizeof(char), count + 3);
+		check_map[i] = ft_calloc(sizeof(char), (count + 4));
 		i++;
 	}
 	i = 1;
 	check_map[0][0] = 'y';
 	check_map[len][0] = 'e';
-	while (i <= (count + 2))
+	while (i < (count + 2))
 	{
 		check_map[0][i] = 'e';
 		check_map[len][i] = 'e';
@@ -109,7 +109,7 @@ void	fill_check(char **check_map, t_data *data)
 				j++;
 			}
 		}
-		while (y <= max)
+		while (y < max)
 		{
 			check_map[x][y] = 'e';
 			y++;
@@ -128,15 +128,17 @@ int	check_wall_map(t_data *data)
 	char	**check_map;
 
 	data->flood_check = 0;
-	check_map = ft_calloc(sizeof(char *), counter_map(data->map, 0) + 2);
+	check_map = ft_calloc(sizeof(char *), (counter_map(data->map, 0) + 3));
 	fill_check(check_map, data);
 	flood_fill(data, check_map, 0, 0);
 /* 	int	i = 0;
-	while (data->map[i])
+	while (check_map[i])
 	{
-		printf("%s", data->map[i]);
+		printf("%s", check_map[i]);
 		i++;
 	} */
+	ft_free_all_map(check_map);
+	free(check_map);
 	if (data->flood_check)
 		return (1);
 	return (0);

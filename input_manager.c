@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/30 15:03:28 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:25:26 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,6 @@ int	input_manager(int keycode, t_data *data)
 	if (keycode == E_KEY)
 		open_door(data);
 	rotator(keycode, data);
-	p_esc_key(keycode, data);
+	p_esc_keys(keycode, data);
 	return (0);
 }
