@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 11:44:55 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 19:54:47 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	map_conversion(t_data *data, char *path)
 	int		len;
 
 	i = 0;
+	data->map_err = 0;
 	len = counter_all_mapfile(path);
 	if (!len)
 	{

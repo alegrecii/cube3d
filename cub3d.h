@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 14:47:59 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 19:54:26 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ typedef struct s_data
 	int				p;
 	int				col_h;
 	int				tex_x;
+	int				flood_check;
+	int				map_err;
 	t_img			screen;
 	t_cam			cam_state;
 	t_mini			minimap;
@@ -125,7 +127,7 @@ void	save_fc_color(t_data *data, char **all_map);
 int		super_exit(t_data *data);
 void	game_starter(t_data *data);
 int		input_manager(int keycode, t_data *data);
-void	p_esc_key(int keycode, t_data *data);
+void	p_esc_keys(int keycode, t_data *data);
 int		rotator(int keycode, t_data *data);
 int		updater(t_data *data);
 int		cam_init(t_data *data);
@@ -141,6 +143,8 @@ void	texture_init(t_data *data, char *path, t_img *i);
 void	animation_manager(t_data *data);
 void	init_fire(t_data *data);
 int		check_map_manager(t_data *data);
+void	check_space_wall(char **check_map);
+void	flood_fill(t_data *data, char **map, int row, int col);
 
 #endif
 

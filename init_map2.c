@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:22:38 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 14:57:18 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 19:55:52 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	save_nord_path(t_data *data, char **all_map)
 		}
 		i++;
 	}
+	data->map_err = 1;
 }
 
 void	save_south_path(t_data *data, char **all_map)
@@ -54,6 +55,7 @@ void	save_south_path(t_data *data, char **all_map)
 		}
 		i++;
 	}
+	data->map_err = 1;
 }
 
 void	save_west_path(t_data *data, char **all_map)
@@ -76,6 +78,7 @@ void	save_west_path(t_data *data, char **all_map)
 		}
 		i++;
 	}
+	data->map_err = 1;
 }
 
 void	save_east_path(t_data *data, char **all_map)
@@ -98,6 +101,7 @@ void	save_east_path(t_data *data, char **all_map)
 		}
 		i++;
 	}
+	data->map_err = 1;
 }
 
 void	save_path_text(t_data *data, char **all_map)

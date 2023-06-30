@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 14:42:59 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:16:25 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	image_init(t_data *data)
 	texture_init(data, data->path_text[1], &data->so);
 	texture_init(data, data->path_text[2], &data->we);
 	texture_init(data, data->path_text[3], &data->ea);
+	if (!data->no.img || !data->so.img || !data->so.img || !data->so.img)
+	{
+		data->map_err = 1;
+		exit(0) ;// da gestireeee
+	}
 	texture_init(data, "./textures/door.xpm", &data->door);
 	init_fire(data);
 }
@@ -53,13 +58,13 @@ int	init_game(t_data *data, char **argv)
 {
 	if (map_conversion(data, argv[1]))
 		return (write(1, "Error: Map error\n", 17));
-	if (check_map_manager(data))
+	if (data->map_err || check_map_manager(data))
 		return (write(1, "Error\n", 6));
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
-	data->p = 1;
 	image_init(data);
 	minimap_init(data);
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
+	data->p = 1;
 	mlx_mouse_hide(data->mlx, data->win);
 	game_starter(data);
 	return (0);
@@ -75,6 +80,7 @@ int	main(int argc, char **argv)
 			return (write(1, "Error: Map error\n", 17));
 		else
 			init_game(&data, argv);
+	(void)data;
 	}
 	else
 		return (write(2, "Error: Bad arguments\n", 21));

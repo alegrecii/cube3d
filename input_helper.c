@@ -6,13 +6,13 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:45:18 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 14:47:01 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:08:21 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	p_esc_key(int keycode, t_data *data)
+void	p_esc_keys(int keycode, t_data *data)
 {
 	if (keycode == P_KEY)
 	{
