@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/29 14:50:55 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:47:59 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,11 @@
 # define HEIGHT 1080
 # define MINI_CONST 7.3
 # define PITCH 100
-/* # define WIDTH 640
-# define HEIGHT 480 */
 # define SPEED 0.1
 # define ROT 0.05
 # define ROT_MOUSE 0.03
 # define ESC 65307
 # define FOV 0.66
-
-/* typedef struct s_images
-{
-	t_img	*screen;
-}		t_images; */
 
 typedef struct s_img
 {
@@ -132,6 +125,8 @@ void	save_fc_color(t_data *data, char **all_map);
 int		super_exit(t_data *data);
 void	game_starter(t_data *data);
 int		input_manager(int keycode, t_data *data);
+void	p_esc_key(int keycode, t_data *data);
+int		rotator(int keycode, t_data *data);
 int		updater(t_data *data);
 int		cam_init(t_data *data);
 void	raycaster(t_data *data);
@@ -145,7 +140,7 @@ int		mouse_move(int x, int y, t_data *data);
 void	texture_init(t_data *data, char *path, t_img *i);
 void	animation_manager(t_data *data);
 void	init_fire(t_data *data);
-int	check_map_manager(t_data *data);
+int		check_map_manager(t_data *data);
 
 #endif
 

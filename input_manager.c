@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/29 11:59:59 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:44:42 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_wall(t_data *data, int keycode)
 	return(1);
 }
 
-void	rotator(int keycode, t_data *data)
+int	rotator(int keycode, t_data *data)
 {
 	double	dirx;
 	double	camx;
@@ -103,6 +103,7 @@ void	rotator(int keycode, t_data *data)
 		data->cam_state.camy = camx * sin(-ROT) + \
 		data->cam_state.camy * cos(-ROT);
 	}
+	return (0);
 }
 
 int	input_manager(int keycode, t_data *data)
@@ -129,16 +130,7 @@ int	input_manager(int keycode, t_data *data)
 	}
 	if (keycode == E_KEY)
 		open_door(data);
-	if (keycode == P_KEY)
-	{
-		data->p *= -1;
-		if (data->p < 0)
-			mlx_mouse_show(data->mlx, data->win);
-		else
-			mlx_mouse_hide(data->mlx, data->win);
-	}
 	rotator(keycode, data);
-	if (keycode == ESC)
-		super_exit(data);
+	p_esc_keys(keycode, data);
 	return (0);
 }
