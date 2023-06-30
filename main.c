@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:16:25 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:23:29 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	init_game(t_data *data, char **argv)
 	minimap_init(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	data->p = 1;
-	mlx_mouse_hide(data->mlx, data->win);
+/* 	mlx_mouse_hide(data->mlx, data->win); */
 	game_starter(data);
 	return (0);
 }

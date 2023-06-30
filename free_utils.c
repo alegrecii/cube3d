@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:25:33 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:13:22 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:22:19 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,32 @@ void	ft_free_all_map(char **all_map)
 
 int	super_exit(t_data *data)
 {
+	int	i;
+
+	i = 0;
+
+	mlx_destroy_image(data->mlx, data->no.img);
+	mlx_destroy_image(data->mlx, data->so.img);
+	mlx_destroy_image(data->mlx, data->ea.img);
+	mlx_destroy_image(data->mlx, data->we.img);
+	mlx_destroy_image(data->mlx, data->screen.img);
+	mlx_destroy_image(data->mlx, data->door.img);
+	while (i < 19)
+	{
+		mlx_destroy_image(data->mlx, data->fire[i].img);
+		i++;
+	}
+	free(data->fire);
+	ft_free_all_map(data->map);
+	free (data->map);
+	free(data->fc_color);
+	i = 0;
+	while (i < 5)
+		free(data->path_text[i++]);
+	free (data->path_text);
 	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 19:54:47 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 20:22:05 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	counter_all_mapfile(char *path)
 	s = get_next_line(fd);
 	while (s)
 	{
+		free(s);
 		s = get_next_line(fd);
 		i++;
 	}
@@ -52,7 +53,7 @@ void	save_map_helper(t_data *data, char **all_map, int i)
 
 	j = 0;
 	len = counter_map(all_map, i);
-	data->map = malloc(sizeof(char *) * len + 1);
+	data->map = malloc(sizeof(char *) * (len + 1));
 	while (j < len)
 	{
 		data->map[j] = ft_strdup(all_map[i]);
@@ -100,17 +101,19 @@ int	map_conversion(t_data *data, char *path)
 		write(2, "Error: can't access file map\n", 29);
 		return (1);
 	}
-	all_map = malloc(sizeof(char *) * len + 1);
+	all_map = malloc(sizeof(char *) * (len + 1));
 	fd = open(path, O_RDONLY);
 	while (i < len)
 	{
 		all_map[i] = get_next_line(fd);
 		i++;
 	}
+	all_map[i] = NULL;
 	save_map(data, all_map);
 	save_path_text(data, all_map);
 	save_fc_color(data, all_map);
 	close(fd);
 	ft_free_all_map(all_map);
+	free (all_map);
 	return (cam_init(data));
 }
