@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:41:25 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/29 15:44:58 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 11:45:10 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_characters(t_data *data)
 			|| data->map[i][j] == 'O' || data->map[i][j] == 'W' \
 			|| data->map[i][j] == 'E' || \
 			data->map[i][j] == 'S' || data->map[i][j] == 'N' \
-			|| data->map[i][j] == '\n')
+			|| data->map[i][j] == '\n' || data->map[i][j] == ' ')
 				j++;
 			else
 				return (1);
@@ -42,7 +42,7 @@ int	check_map_manager(t_data *data)
 {
 	if (check_characters(data))
 		return (1);
-	if (check_wall(data))
-		return (1);
+	/* if (check_wall(data))
+		return (1); */
 	return (0);
 }
