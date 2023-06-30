@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:34:30 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/16 18:59:26 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:36:47 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	color_converter(t_data *data)
 	ft_atoi(ceiling[1]), ft_atoi(ceiling[2]));
 	data->floor = rgb_to_hex(ft_atoi(floor[0] + 2), \
 	ft_atoi(floor[1]), ft_atoi(floor[2]));
+	ft_free_all_map(ceiling);
+	ft_free_all_map(floor);
+	free(ceiling);
+	free(floor);
 }
 
 void	save_ceiling_color(t_data *data, char **all_map)
@@ -78,7 +82,7 @@ void	save_floor_color(t_data *data, char **all_map)
 
 void	save_fc_color(t_data *data, char **all_map)
 {
-	data->fc_color = malloc(sizeof(char *) * 2);
+	data->fc_color = malloc(sizeof(char *) * 3);
 	data->fc_color[2] = NULL;
 	save_floor_color(data, all_map);
 	save_ceiling_color(data, all_map);

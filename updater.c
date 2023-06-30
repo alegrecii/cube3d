@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   updater.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/30 14:41:52 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:08:11 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/* int	floor_darker(int color, int y)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
+	if (y < 1)
+		return (color);
+
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	color = (r << 16) | (g << 8) | b;
+	return (color);
+} */
 
 void my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color)
 {

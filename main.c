@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 14:42:59 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:19:58 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	init_game(t_data *data, char **argv)
 	data->p = 1;
 	image_init(data);
 	minimap_init(data);
-	mlx_mouse_hide(data->mlx, data->win);
+/* 	mlx_mouse_hide(data->mlx, data->win); */
 	game_starter(data);
 	return (0);
 }

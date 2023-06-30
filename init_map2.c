@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:22:38 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/26 14:57:18 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:09:40 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	save_east_path(t_data *data, char **all_map)
 
 void	save_path_text(t_data *data, char **all_map)
 {
-	data->path_text = malloc(sizeof(char *) * 4);
+	data->path_text = malloc(sizeof(char *) * 5);
 	data->path_text[4] = NULL;
 	save_nord_path(data, all_map);
 	save_south_path(data, all_map);
