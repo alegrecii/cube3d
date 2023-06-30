@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/29 12:30:55 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:50:55 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int		mouse_move(int x, int y, t_data *data);
 void	texture_init(t_data *data, char *path, t_img *i);
 void	animation_manager(t_data *data);
 void	init_fire(t_data *data);
+int	check_map_manager(t_data *data);
 
 #endif
 

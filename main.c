@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/28 17:44:17 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:54:35 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ int	init_game(t_data *data, char **argv)
 {
 	if (map_conversion(data, argv[1]))
 		return (write(1, "Error: Map error\n", 17));
+	if (check_map_manager(data))
+		return (write(1, "Error\n", 6));
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	data->p = 1;
+
 	image_init(data);
 	minimap_init(data);
 	mlx_mouse_hide(data->mlx, data->win);
