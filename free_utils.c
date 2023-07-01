@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:25:33 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 02:20:51 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 02:28:49 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	anticipated_exit(t_data *data)
 	free(data->fc_color);
 	if (data->mlx)
 	{
+		mlx_destroy_image(data->mlx, data->dark_floor.img);
 		mlx_destroy_image(data->mlx, data->screen.img);
 		if (data->no.img)
 			mlx_destroy_image(data->mlx, data->no.img);
@@ -88,6 +89,7 @@ int	super_exit(t_data *data)
 	mlx_destroy_image(data->mlx, data->so.img);
 	mlx_destroy_image(data->mlx, data->ea.img);
 	mlx_destroy_image(data->mlx, data->we.img);
+	mlx_destroy_image(data->mlx, data->dark_floor.img);
 	mlx_destroy_image(data->mlx, data->screen.img);
 	mlx_destroy_image(data->mlx, data->door.img);
 	while (i < 19)

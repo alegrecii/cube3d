@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 02:18:42 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 02:29:23 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	image_init(t_data *data)
 	screen.addr = mlx_get_data_addr(screen.img, &screen.bits_per_pixel, \
 	&screen.line_length, &screen.endian);
 	data->screen = screen;
+	floor_darker(data, &data->dark_floor);
 	texture_init(data, data->path_text[0], &data->no);
 	texture_init(data, data->path_text[1], &data->so);
 	texture_init(data, data->path_text[2], &data->we);

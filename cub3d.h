@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 01:47:12 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 03:41:00 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ typedef struct s_data
 	int				tex_x;
 	int				flood_check;
 	int				map_err;
+	unsigned int 	max_light;
+	t_img			dark_floor;
 	t_img			screen;
 	t_cam			cam_state;
 	t_mini			minimap;
@@ -117,35 +119,37 @@ typedef struct s_data
 }		t_data;
 
 
-int		map_conversion(t_data *data, char *path);
-int		check_arg(char **str);
-void	ft_free_all_map(char **all_map);
-void	anticipated_exit(t_data *data);
-int		counter_map(char **all_map, int i);
-void	save_path_text(t_data *data, char **all_map);
-char	*texture_cleaner(char *orig);
-void	save_fc_color(t_data *data, char **all_map);
-int		super_exit(t_data *data);
-void	game_starter(t_data *data);
-int		input_manager(int keycode, t_data *data);
-void	p_esc_keys(int keycode, t_data *data);
-int		rotator(int keycode, t_data *data);
-int		updater(t_data *data);
-int		cam_init(t_data *data);
-void	raycaster(t_data *data);
-void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
-void	draw_texture(int crop_up, int crop_down, int y, t_data *data);
-t_img	texture_chooser(t_ray *ray, t_data *data);
-int		texture_calculator(t_ray *ray, t_data *data);
-int		color_darker(int color, double len);
-void	minimap_manager(t_data *data);
-int		mouse_move(int x, int y, t_data *data);
-void	texture_init(t_data *data, char *path, t_img *i);
-void	animation_manager(t_data *data);
-void	init_fire(t_data *data);
-int		check_map_manager(t_data *data);
-void	check_space_wall(char **check_map);
-void	flood_fill(t_data *data, char **map, int row, int col);
+int				map_conversion(t_data *data, char *path);
+int				check_arg(char **str);
+void			ft_free_all_map(char **all_map);
+void			anticipated_exit(t_data *data);
+int				counter_map(char **all_map, int i);
+void			save_path_text(t_data *data, char **all_map);
+char			*texture_cleaner(char *orig);
+void			save_fc_color(t_data *data, char **all_map);
+int				super_exit(t_data *data);
+void			game_starter(t_data *data);
+int				input_manager(int keycode, t_data *data);
+void			p_esc_keys(int keycode, t_data *data);
+int				rotator(int keycode, t_data *data);
+int				updater(t_data *data);
+unsigned int	max_light_calculator(unsigned int color);
+int				cam_init(t_data *data);
+void			floor_darker(t_data *data, t_img *new);
+void			raycaster(t_data *data);
+void			my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
+void			draw_texture(int crop_up, int crop_down, int y, t_data *data);
+t_img			texture_chooser(t_ray *ray, t_data *data);
+int				texture_calculator(t_ray *ray, t_data *data);
+int				color_darker(int color, double len);
+void			minimap_manager(t_data *data);
+int				mouse_move(int x, int y, t_data *data);
+void			texture_init(t_data *data, char *path, t_img *i);
+void			animation_manager(t_data *data);
+void			init_fire(t_data *data);
+int				check_map_manager(t_data *data);
+void			check_space_wall(char **check_map);
+void			flood_fill(t_data *data, char **map, int row, int col);
 
 #endif
 

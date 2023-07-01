@@ -3,14 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   animation_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 17:35:40 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 11:46:04 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:15:01 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	max_light_helper(double *r, double *g, double *b)
+{
+	if (*g>= *b && *g >= *r)
+	{
+		*r = *r * (255 / (*g));
+		*b = *b * (255 / (*g));
+		*g = 255;
+	}
+	else if (*b >= *g && *b >= *r)
+	{
+		*g = *g * (255 / (*b));
+		*r = *r * (255 / (*b));
+		*b = 255;
+	}
+}
+
+unsigned int	max_light_calculator(unsigned int color)
+{
+	double	r;
+	double	g;
+	double	b;
+
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
+
+	if (r >= g && r >= b)
+	{
+		g = g * (255 / r);
+		b = b * (255 / r);
+		r = 255;
+	}
+	else
+		max_light_helper(&r, &g, &b);
+	color = ((int)r << 16) | ((int)g << 8) | (int)b;
+	return (color);
+}
+
 
 void	init_fire(t_data *data)
 {
