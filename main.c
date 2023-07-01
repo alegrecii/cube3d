@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:23:29 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 02:18:42 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	image_init(t_data *data)
 	texture_init(data, data->path_text[1], &data->so);
 	texture_init(data, data->path_text[2], &data->we);
 	texture_init(data, data->path_text[3], &data->ea);
-	if (!data->no.img || !data->so.img || !data->so.img || !data->so.img)
+	if (!data->no.img || !data->so.img || !data->ea.img || !data->we.img)
 	{
-		data->map_err = 1;
-		exit(0) ;// da gestireeee
+		write(1, "Please insert valid textures\n", 30);
+		anticipated_exit(data);
 	}
 	texture_init(data, "./textures/door.xpm", &data->door);
 	init_fire(data);
@@ -56,10 +56,14 @@ void	image_init(t_data *data)
 
 int	init_game(t_data *data, char **argv)
 {
+	data->mlx = NULL;
 	if (map_conversion(data, argv[1]))
 		return (write(1, "Error: Map error\n", 17));
 	if (data->map_err || check_map_manager(data))
-		return (write(1, "Error\n", 6));
+	{
+		write(1, "Error\n", 6);
+		anticipated_exit(data);
+	}
 	data->mlx = mlx_init();
 	image_init(data);
 	minimap_init(data);

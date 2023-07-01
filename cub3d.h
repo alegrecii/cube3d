@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:23:47 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 01:47:12 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_data
 int		map_conversion(t_data *data, char *path);
 int		check_arg(char **str);
 void	ft_free_all_map(char **all_map);
+void	anticipated_exit(t_data *data);
 int		counter_map(char **all_map, int i);
 void	save_path_text(t_data *data, char **all_map);
 char	*texture_cleaner(char *orig);

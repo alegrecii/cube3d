@@ -6,11 +6,40 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:25:33 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:22:19 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 02:20:51 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	anticipated_exit(t_data *data)
+{
+
+	int	i;
+
+	i = 0;
+	while (i < 5)
+		free(data->path_text[i++]);
+	free(data->path_text);
+	ft_free_all_map(data->map);
+	free(data->map);
+	free(data->fc_color);
+	if (data->mlx)
+	{
+		mlx_destroy_image(data->mlx, data->screen.img);
+		if (data->no.img)
+			mlx_destroy_image(data->mlx, data->no.img);
+		if (data->so.img)
+			mlx_destroy_image(data->mlx, data->so.img);
+		if (data->ea.img)
+			mlx_destroy_image(data->mlx, data->ea.img);
+		if (data->we.img)
+			mlx_destroy_image(data->mlx, data->we.img);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
+	exit(0);
+}
 
 char	*texture_cleaner(char *orig)
 {

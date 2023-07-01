@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:41:25 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:55:12 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/01 01:48:18 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	check_characters(t_data *data)
 		while (data->map[i][j])
 		{
 			if (data->map[i][j] == '0' || data->map[i][j] == '1'\
-			|| data->map[i][j] == 'D' \
-			|| data->map[i][j] == 'O' || data->map[i][j] == 'W' \
-			|| data->map[i][j] == 'E' || \
-			data->map[i][j] == 'S' || data->map[i][j] == 'N' \
+			|| data->map[i][j] == 'D'|| data->map[i][j] == 'O' \
 			|| data->map[i][j] == '\n' || data->map[i][j] == ' ')
 				j++;
 			else
