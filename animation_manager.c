@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 17:35:40 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 04:15:01 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 01:41:05 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	max_light_helper(double *r, double *g, double *b)
 {
-	if (*g>= *b && *g >= *r)
+	if (*g >= *b && *g >= *r)
 	{
 		*r = *r * (255 / (*g));
 		*b = *b * (255 / (*g));
@@ -37,7 +37,6 @@ unsigned int	max_light_calculator(unsigned int color)
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
-
 	if (r >= g && r >= b)
 	{
 		g = g * (255 / r);
@@ -49,7 +48,6 @@ unsigned int	max_light_calculator(unsigned int color)
 	color = ((int)r << 16) | ((int)g << 8) | (int)b;
 	return (color);
 }
-
 
 void	init_fire(t_data *data)
 {
@@ -84,8 +82,6 @@ void	animation_manager(t_data *data)
 
 	y = 0;
 	color = 0;
-	/* if (i == 5)
-		i = 11; */
 	while (y < 1000)
 	{
 		x = 0;
