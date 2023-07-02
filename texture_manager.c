@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:53:32 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:47:49 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ t_img	texture_chooser(t_ray *ray, t_data *data)
 {
 	if (ray->is_door)
 		return (data->door);
-	if (ray->side == 0 && ray->dirx > 0) //E
+	if (ray->side == 0 && ray->dirx > 0)
 		return (data->ea);
-	if (ray->side == 0 && ray->dirx < 0) //W
+	if (ray->side == 0 && ray->dirx < 0)
 		return (data->we);
-	if (ray->side == 1 && ray->diry > 0) //S
+	if (ray->side == 1 && ray->diry > 0)
 		return (data->so);
-	if (ray->side == 1 && ray->diry < 0) //N
+	if (ray->side == 1 && ray->diry < 0)
 		return (data->no);
 	return (data->no);
 }

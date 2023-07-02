@@ -6,7 +6,7 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:07 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/30 12:50:51 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:49:23 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 
 void	put_player(t_data *data)
 {
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2), data->minimap.starty + (data->minimap.l / 2), 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)-1, data->minimap.starty + (data->minimap.l / 2)-1, 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)+1, data->minimap.starty + (data->minimap.l / 2)-1, 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)-1, data->minimap.starty + (data->minimap.l / 2)+1, 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)+1, data->minimap.starty + (data->minimap.l / 2)+1, 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)-1, data->minimap.starty + (data->minimap.l / 2), 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2)+1, data->minimap.starty + (data->minimap.l / 2), 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2), data->minimap.starty + (data->minimap.l / 2)-1, 0xff0000);
-	my_mlx_pixel_put(&data->screen, data->minimap.startx + (data->minimap.l / 2), data->minimap.starty + (data->minimap.l / 2)+1, 0xff0000);
+	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
+	(data->minimap.l / 2), data->minimap.starty + \
+	(data->minimap.l / 2), 0xff0000);
+	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
+	(data->minimap.l / 2) - 1, data->minimap.starty + \
+	(data->minimap.l / 2) - 1, 0xff0000);
+	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
+	(data->minimap.l / 2) + 1, data->minimap.starty + \
+	(data->minimap.l / 2) - 1, 0xff0000);
+	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
+	(data->minimap.l / 2) - 1, data->minimap.starty + \
+	(data->minimap.l / 2) + 1, 0xff0000);
+	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
+	(data->minimap.l / 2) + 1, data->minimap.starty + \
+	(data->minimap.l / 2) + 1, 0xff0000);
+	put_player_helper(data);
 }
 
 int	check_limits_minimap(t_data *data, double addx, double addy)
@@ -47,11 +54,11 @@ void	draw_blocks(t_data *data, int y, int x)
 		while (x < (data->minimap.endx - 3))
 		{
 			if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == '0')
-				my_mlx_pixel_put(&data->screen, x, y,  data->ceiling);
+				my_mlx_pixel_put(&data->screen, x, y, data->ceiling);
 			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'D')
-				my_mlx_pixel_put(&data->screen, x, y,  0x960c0c);
+				my_mlx_pixel_put(&data->screen, x, y, 0x960c0c);
 			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'O')
-				my_mlx_pixel_put(&data->screen, x, y,  0x28965a);
+				my_mlx_pixel_put(&data->screen, x, y, 0x28965a);
 			else
 				my_mlx_pixel_put(&data->screen, x, y, 0xd8ebfd);
 			x++;

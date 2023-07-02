@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 20:22:05 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:53:05 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,6 @@ int	map_conversion(t_data *data, char *path)
 		i++;
 	}
 	all_map[i] = NULL;
-	save_map(data, all_map);
-	save_path_text(data, all_map);
-	save_fc_color(data, all_map);
-	close(fd);
-	ft_free_all_map(all_map);
-	free (all_map);
+	map_conversion_helper(data, all_map, fd);
 	return (cam_init(data));
 }

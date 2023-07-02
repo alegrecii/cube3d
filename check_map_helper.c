@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 15:50:55 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 01:57:25 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:52:55 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	fill_first_last_helper(char **check_map, t_data *data, int len, int count)
+{
+	int	i;
+
+	i = 0;
+	(void)data;
+	check_map[0][0] = 'y';
+	check_map[len][0] = 'e';
+	while (i < (count + 2))
+	{
+		check_map[0][i] = 'e';
+		check_map[len][i] = 'e';
+		i++;
+	}
+	check_map[0][i] = '\n';
+	check_map[len][i] = '\n';
+	check_map[0][i + 1] = '\0';
+	check_map[len][i + 1] = '\0';
+}
 
 void	check_space_wall(char **check_map)
 {
@@ -33,7 +53,8 @@ void	check_space_wall(char **check_map)
 
 void	flood_fill(t_data *data, char **map, int row, int col)
 {
-	if (!map[row] || map[row][col] == '1' || map[row][col] == '\n' || !map[row][col])
+	if (!map[row] || map[row][col] == '1' \
+	|| map[row][col] == '\n' || !map[row][col])
 		return ;
 	if (map[row][col] != '1' && map[row][col] != 'e' && map[row][col] != 'y')
 		data->flood_check = 1;

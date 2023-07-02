@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:26:21 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:39:19 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:47:34 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ t_ray	ray_init(t_data *data, int col)
 
 void	ray_launcher(t_data *data, t_ray *ray)
 {
-	while (data->map[ray->mapy][ray->mapx] == '0' || data->map[ray->mapy][ray->mapx] == 'O')
+	while (data->map[ray->mapy][ray->mapx] == '0' \
+	|| data->map[ray->mapy][ray->mapx] == 'O')
 	{
 		if (ray->side_distx < ray->side_disty)
 		{

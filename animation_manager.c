@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 17:35:40 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 01:41:05 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:43:26 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,10 @@ void	animation_manager(t_data *data)
 		x = 0;
 		while (x < 1000)
 		{
-			color = *(int *)(data->fire[i].addr + (4 * data->fire[i].w * x) + (4 * y));
+			color = *(int *)(data->fire[i].addr + \
+			(4 * data->fire[i].w * x) + (4 * y));
 			if (color >= 0)
-				my_mlx_pixel_put(&data->screen, y + 900, x,color);
+				my_mlx_pixel_put(&data->screen, y + 900, x, color);
 			x++;
 		}
 		y++;

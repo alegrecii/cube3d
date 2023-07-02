@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   updater.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:29:49 by alegreci          #+#    #+#             */
-/*   Updated: 2023/07/01 03:57:22 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:49:06 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-unsigned int		dark_calculator(unsigned int floor, int x, int y, t_data *data)
+unsigned int	dark_calculator(unsigned int floor, int x, int y, t_data *data)
 {
 	int		r;
 	int		g;
@@ -40,25 +40,28 @@ void	floor_darker(t_data *data, t_img *new)
 
 	y = 0;
 	new->img = mlx_new_image(data->mlx, WIDTH, HEIGHT / 2);
-	new->addr = mlx_get_data_addr(new->img, &new->bits_per_pixel, &new->line_length, &new->endian);
+	new->addr = mlx_get_data_addr(new->img, \
+	&new->bits_per_pixel, &new->line_length, &new->endian);
 	data->max_light = max_light_calculator(data->floor);
 	while (y < HEIGHT / 2)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(new, x, y, dark_calculator(data->floor, x, y, data));
+			my_mlx_pixel_put(new, x, y, \
+			dark_calculator(data->floor, x, y, data));
 			x++;
 		}
 		y++;
 	}
 }
 
-void my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color)
+void	my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color)
 {
-	char *dst;
+	char	*dst;
 
-	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel / 8));
+	dst = screen->addr + (y * screen->line_length + \
+	x * (screen->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -76,7 +79,9 @@ void	draw_background(t_data *data)
 			if (y <= HEIGHT / 2)
 				my_mlx_pixel_put(&data->screen, x, y, data->ceiling);
 			else
-				my_mlx_pixel_put(&data->screen, x, y, (*(int *)(data->dark_floor.addr + WIDTH * (y - 540) * 4 + x * 4)));
+				my_mlx_pixel_put(&data->screen, x, y, \
+				(*(int *)(data->dark_floor.addr \
+				+ WIDTH * (y - 540) * 4 + x * 4)));
 			x++;
 		}
 		y++;

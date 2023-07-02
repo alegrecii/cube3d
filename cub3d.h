@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 03:41:00 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:03:48 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_data
 	int				tex_x;
 	int				flood_check;
 	int				map_err;
-	unsigned int 	max_light;
+	unsigned int	max_light;
 	t_img			dark_floor;
 	t_img			screen;
 	t_cam			cam_state;
@@ -120,6 +120,8 @@ typedef struct s_data
 
 
 int				map_conversion(t_data *data, char *path);
+void			map_conversion_helper(t_data *data, char **all_map, int fd);
+void			save_map(t_data *data, char **all_map);
 int				check_arg(char **str);
 void			ft_free_all_map(char **all_map);
 void			anticipated_exit(t_data *data);
@@ -130,6 +132,9 @@ void			save_fc_color(t_data *data, char **all_map);
 int				super_exit(t_data *data);
 void			game_starter(t_data *data);
 int				input_manager(int keycode, t_data *data);
+int				open_door_helper(t_data *data, int opened);
+int				check_wall_helper(t_data *data, int keycode, int wall_dist);
+void			rotator_helper(t_data *data, double dirx, double camx);
 void			p_esc_keys(int keycode, t_data *data);
 int				rotator(int keycode, t_data *data);
 int				updater(t_data *data);
@@ -137,12 +142,15 @@ unsigned int	max_light_calculator(unsigned int color);
 int				cam_init(t_data *data);
 void			floor_darker(t_data *data, t_img *new);
 void			raycaster(t_data *data);
-void			my_mlx_pixel_put(t_img *screen, int x, int y, unsigned int color);
+void			my_mlx_pixel_put(t_img *screen, int x, \
+				int y, unsigned int color);
 void			draw_texture(int crop_up, int crop_down, int y, t_data *data);
 t_img			texture_chooser(t_ray *ray, t_data *data);
 int				texture_calculator(t_ray *ray, t_data *data);
 int				color_darker(int color, double len);
 void			minimap_manager(t_data *data);
+void			put_player_helper(t_data *data);
+void			draw_blocks_helper(t_data *data, int addx, int addy);
 int				mouse_move(int x, int y, t_data *data);
 void			texture_init(t_data *data, char *path, t_img *i);
 void			animation_manager(t_data *data);
@@ -150,6 +158,7 @@ void			init_fire(t_data *data);
 int				check_map_manager(t_data *data);
 void			check_space_wall(char **check_map);
 void			flood_fill(t_data *data, char **map, int row, int col);
+void			fill_first_last_helper(char **check_map, t_data *data, int len, int count);
 
 #endif
 

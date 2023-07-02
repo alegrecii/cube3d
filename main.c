@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:02:44 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 02:29:23 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:54:44 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	init_game(t_data *data, char **argv)
 	minimap_init(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3d");
 	data->p = 1;
-/* 	mlx_mouse_hide(data->mlx, data->win); */
+	/* mlx_mouse_hide(data->mlx, data->win); */
 	game_starter(data);
 	return (0);
 }
@@ -85,7 +85,6 @@ int	main(int argc, char **argv)
 			return (write(1, "Error: Map error\n", 17));
 		else
 			init_game(&data, argv);
-	(void)data;
 	}
 	else
 		return (write(2, "Error: Bad arguments\n", 21));

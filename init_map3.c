@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:34:30 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/30 15:36:47 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:50:17 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 unsigned int	rgb_to_hex(int r, int g, int b)
 {
 	unsigned int	hex;
+
 	hex = r * 65536 + g * 256 + b;
 	return (hex);
 }

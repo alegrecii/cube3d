@@ -6,11 +6,21 @@
 /*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 16:59:18 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/30 14:41:46 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:53:09 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	map_conversion_helper(t_data *data, char **all_map, int fd)
+{
+	save_map(data, all_map);
+	save_path_text(data, all_map);
+	save_fc_color(data, all_map);
+	close(fd);
+	ft_free_all_map(all_map);
+	free (all_map);
+}
 
 void	game_starter(t_data *data)
 {

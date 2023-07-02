@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:25:33 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/01 02:28:49 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:49:34 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	anticipated_exit(t_data *data)
 {
-
 	int	i;
 
 	i = 0;
@@ -62,7 +61,6 @@ char	*texture_cleaner(char *orig)
 			txt[i] = '\0';
 	}
 	txt = ft_strdup(txt);
-	/* free (orig); */
 	return (txt);
 }
 
@@ -79,12 +77,25 @@ void	ft_free_all_map(char **all_map)
 	free(all_map[i]);
 }
 
+void	super_exit_helper(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	free(data->fire);
+	ft_free_all_map(data->map);
+	free (data->map);
+	free(data->fc_color);
+	while (i < 5)
+		free(data->path_text[i++]);
+	free (data->path_text);
+}
+
 int	super_exit(t_data *data)
 {
 	int	i;
 
 	i = 0;
-
 	mlx_destroy_image(data->mlx, data->no.img);
 	mlx_destroy_image(data->mlx, data->so.img);
 	mlx_destroy_image(data->mlx, data->ea.img);
@@ -97,14 +108,7 @@ int	super_exit(t_data *data)
 		mlx_destroy_image(data->mlx, data->fire[i].img);
 		i++;
 	}
-	free(data->fire);
-	ft_free_all_map(data->map);
-	free (data->map);
-	free(data->fc_color);
-	i = 0;
-	while (i < 5)
-		free(data->path_text[i++]);
-	free (data->path_text);
+	super_exit_helper(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);

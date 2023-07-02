@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by alegreci          #+#    #+#             */
-/*   Updated: 2023/06/30 20:25:26 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:51:33 by mdi-paol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void	close_door(t_data *data)
 {
-	if (data->map[(int)data->cam_state.posy + 1][(int)data->cam_state.posx] == 'O')
-		data->map[(int)data->cam_state.posy + 1][(int)data->cam_state.posx] = 'D';
-	if (data->map[(int)data->cam_state.posy - 1][(int)data->cam_state.posx] == 'O')
-		data->map[(int)data->cam_state.posy - 1][(int)data->cam_state.posx] = 'D';
-	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx + 1] == 'O')
-		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx + 1] = 'D';
-	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx - 1] == 'O')
-		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx - 1] = 'D';
+	if (data->map[(int)data->cam_state.posy \
+	+ 1][(int)data->cam_state.posx] == 'O')
+		data->map[(int)data->cam_state.posy \
+		+ 1][(int)data->cam_state.posx] = 'D';
+	if (data->map[(int)data->cam_state.posy \
+	- 1][(int)data->cam_state.posx] == 'O')
+		data->map[(int)data->cam_state.posy \
+		- 1][(int)data->cam_state.posx] = 'D';
+	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx \
+	+ 1] == 'O')
+		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx \
+		+ 1] = 'D';
+	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx \
+	- 1] == 'O')
+		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx \
+		- 1] = 'D';
 }
 
 void	open_door(t_data *data)
@@ -29,52 +37,49 @@ void	open_door(t_data *data)
 	int	opened;
 
 	opened = 0;
-	if (data->map[(int)data->cam_state.posy + 1][(int)data->cam_state.posx] == 'D')
+	if (data->map[(int)data->cam_state.posy \
+	+ 1][(int)data->cam_state.posx] == 'D')
 	{
-		data->map[(int)data->cam_state.posy + 1][(int)data->cam_state.posx] = 'O';
+		data->map[(int)data->cam_state.posy \
+		+ 1][(int)data->cam_state.posx] = 'O';
 		opened = 1;
 	}
-	if (data->map[(int)data->cam_state.posy - 1][(int)data->cam_state.posx] == 'D')
+	if (data->map[(int)data->cam_state.posy \
+	- 1][(int)data->cam_state.posx] == 'D')
 	{
-		data->map[(int)data->cam_state.posy - 1][(int)data->cam_state.posx] = 'O';
+		data->map[(int)data->cam_state.posy \
+		- 1][(int)data->cam_state.posx] = 'O';
 		opened = 1;
 	}
-	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx + 1] == 'D')
-	{
-		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx + 1] = 'O';
-		opened = 1;
-	}
-	if (data->map[(int)data->cam_state.posy][(int)data->cam_state.posx - 1] == 'D')
-	{
-		data->map[(int)data->cam_state.posy][(int)data->cam_state.posx - 1] = 'O';
-		opened = 1;
-	}
+	opened = open_door_helper(data, opened);
 	if (opened == 0)
 		close_door(data);
 }
 
 int	check_wall(t_data *data, int keycode)
 {
-	double wall_dist;
+	double	wall_dist;
 
 	wall_dist = 0.1;
-	if (keycode == W_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.dirx * (SPEED + wall_dist))] == '1')
-		return(0);
-	if (keycode == S_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.dirx * (SPEED + wall_dist))] == '1')
-		return(0);
-	if (keycode == D_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.diry * (SPEED + wall_dist))] == '1')
-		return(0);
-	if (keycode == A_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.diry * (SPEED + wall_dist))] == '1')
-		return(0);
-	if (keycode == W_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.dirx * (SPEED + wall_dist))] == 'D')
-		return(0);
-	if (keycode == S_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.diry * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.dirx * (SPEED + wall_dist))] == 'D')
-		return(0);
-	if (keycode == D_KEY && data->map[(int)(data->cam_state.posy + data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx - data->cam_state.diry * (SPEED + wall_dist))] == 'D')
-		return(0);
-	if (keycode == A_KEY && data->map[(int)(data->cam_state.posy - data->cam_state.dirx * (SPEED + wall_dist))][(int)(data->cam_state.posx + data->cam_state.diry * (SPEED + wall_dist))] == 'D')
-		return(0);
-	return(1);
+	if (keycode == W_KEY && data->map[(int)(data->cam_state.posy + \
+	data->cam_state.diry * (SPEED + wall_dist))][(int)(\
+	data->cam_state.posx + data->cam_state.dirx * (SPEED + wall_dist))] == '1')
+		return (0);
+	if (keycode == S_KEY && data->map[(int)(data->cam_state.posy - \
+	data->cam_state.diry * (SPEED + wall_dist))][(int)(\
+	data->cam_state.posx - data->cam_state.dirx * (SPEED + wall_dist))] == '1')
+		return (0);
+	if (keycode == D_KEY && data->map[(int)(data->cam_state.posy + \
+	data->cam_state.dirx * (SPEED + wall_dist))][(int)(\
+	data->cam_state.posx - data->cam_state.diry * (SPEED + wall_dist))] == '1')
+		return (0);
+	if (keycode == A_KEY && data->map[(int)(data->cam_state.posy - \
+	data->cam_state.dirx * (SPEED + wall_dist))][(int)(\
+	data->cam_state.posx + data->cam_state.diry * (SPEED + wall_dist))] == '1')
+		return (0);
+	if (!check_wall_helper(data, keycode, wall_dist))
+		return (0);
+	return (1);
 }
 
 int	rotator(int keycode, t_data *data)
@@ -84,13 +89,16 @@ int	rotator(int keycode, t_data *data)
 
 	camx = data->cam_state.camx;
 	dirx = data->cam_state.dirx;
-
 	if (keycode == ARROW_RIGHT)
 	{
-		data->cam_state.dirx = data->cam_state.dirx * cos(ROT) - data->cam_state.diry * sin(ROT);
-		data->cam_state.diry = dirx * sin(ROT) + data->cam_state.diry * cos(ROT);
-		data->cam_state.camx = data->cam_state.camx * cos(ROT) - data->cam_state.camy * sin(ROT);
-		data->cam_state.camy = camx * sin(ROT) + data->cam_state.camy * cos(ROT);
+		data->cam_state.dirx = data->cam_state.dirx * \
+		cos(ROT) - data->cam_state.diry * sin(ROT);
+		data->cam_state.diry = dirx * sin(ROT) + \
+		data->cam_state.diry * cos(ROT);
+		data->cam_state.camx = data->cam_state.camx * \
+		cos(ROT) - data->cam_state.camy * sin(ROT);
+		data->cam_state.camy = camx * sin(ROT) + \
+		data->cam_state.camy * cos(ROT);
 	}
 	if (keycode == ARROW_LEFT)
 	{
@@ -103,6 +111,7 @@ int	rotator(int keycode, t_data *data)
 		data->cam_state.camy = camx * sin(-ROT) + \
 		data->cam_state.camy * cos(-ROT);
 	}
+		//rotator_helper(data, camx, dirx);
 	return (0);
 }
 
