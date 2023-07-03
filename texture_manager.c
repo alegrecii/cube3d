@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/07/03 12:44:18 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:13:29 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	color_chooser(t_img	i, int tex_y, t_data *data)
 	int		tex_x;
 	int		color;
 
+	color = 0;
 	tex_x = data->tex_x;
 	if (tex_x >= 0 && tex_x < i.w && tex_y >= 0 && tex_y < i.h)
 		color = *(int *)(i.addr + (4 * i.w * tex_y) + (4 * tex_x));
