@@ -6,7 +6,7 @@
 /*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:25:14 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/06/27 11:25:28 by alegreci         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:52:50 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	move_mouse_left(t_data *data)
 	data->cam_state.camy = camx * sin(-ROT_MOUSE) + \
 	data->cam_state.camy * cos(-ROT_MOUSE);
 }
-
 
 void	move_mouse_right(t_data *data)
 {

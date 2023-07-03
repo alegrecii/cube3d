@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:07 by alegreci          #+#    #+#             */
-/*   Updated: 2023/07/02 17:49:23 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:43:45 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ void	put_player(t_data *data)
 	put_player_helper(data);
 }
 
-int	check_limits_minimap(t_data *data, double addx, double addy)
+int	check_limits_minimap(t_data *data, double addx, double addy, char c)
 {
 	if (addx < 0 || (int)addx >= (int)ft_strlen(data->map[0]))
 		return (0);
 	if (addy < 0 || (int)addy >= counter_map(data->map, 0))
 		return (0);
-	return (1);
+	if (data->map[(int)(addy)][(int)(addx)] == c)
+		return (1);
+	return (0);
 }
 
 void	draw_blocks(t_data *data, int y, int x)
@@ -53,11 +55,11 @@ void	draw_blocks(t_data *data, int y, int x)
 		x = data->minimap.startx + 3;
 		while (x < (data->minimap.endx - 3))
 		{
-			if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == '0')
+			if (check_limits_minimap(data, addx, addy, '0'))
 				my_mlx_pixel_put(&data->screen, x, y, data->ceiling);
-			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'D')
+			else if (check_limits_minimap(data, addx, addy, 'D'))
 				my_mlx_pixel_put(&data->screen, x, y, 0x960c0c);
-			else if (check_limits_minimap(data, addx, addy) && data->map[(int)(addy)][(int)(addx)] == 'O')
+			else if (check_limits_minimap(data, addx, addy, 'O'))
 				my_mlx_pixel_put(&data->screen, x, y, 0x28965a);
 			else
 				my_mlx_pixel_put(&data->screen, x, y, 0xd8ebfd);

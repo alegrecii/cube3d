@@ -1,4 +1,0 @@
-E: dirx  1, diry  0
-W: dirx -1, diry  0
-S: dirx  0, diry  1
-N: dirx  0, diry -1

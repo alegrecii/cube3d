@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:45:18 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 18:51:17 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:50:34 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	rotator_helper(t_data *data, double dirx, double camx)
-{
-	data->cam_state.dirx = data->cam_state.dirx * \
-	cos(-ROT) - data->cam_state.diry * sin(-ROT);
-	data->cam_state.diry = dirx * sin(-ROT) + \
-	data->cam_state.diry * cos(-ROT);
-	data->cam_state.camx = data->cam_state.camx * \
-	cos(-ROT) - data->cam_state.camy * sin(-ROT);
-	data->cam_state.camy = camx * sin(-ROT) + \
-	data->cam_state.camy * cos(-ROT);
-}
 
 int	check_wall_helper(t_data *data, int keycode, int wall_dist)
 {
@@ -67,9 +55,22 @@ int	open_door_helper(t_data *data, int opened)
 void	p_esc_keys(int keycode, t_data *data)
 {
 	if (keycode == P_KEY)
-	{
 		data->p *= -1;
-	}
 	if (keycode == ESC)
 		super_exit(data);
 }
+
+//funzione che perde memoria, ma piu' carina;
+/* void	p_esc_keys(int keycode, t_data *data)
+{
+	if (keycode == P_KEY)
+	{
+		data->p *= -1;
+		if (data->p < 0)
+			mlx_mouse_show(data->mlx, data->win);
+		else
+			mlx_mouse_hide(data->mlx, data->win);
+	}
+	if (keycode == ESC)
+		super_exit(data);
+} */

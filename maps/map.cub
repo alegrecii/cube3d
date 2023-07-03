@@ -1,9 +1,9 @@
-NO ./textures/bricks.xpm
-SO ./textures/fire.xpm
-WE ./textures/red.xpm
-EA ./textures/choco.xpm
+NO ./textures/g4.xpm
+SO ./textures/g3.xpm
+WE ./textures/g2.xpm
+EA ./textures/g1.xpm
 
-C 173,216,230
+C 58,35,3
 F 191,232,119
 
         1111111111111111111111111

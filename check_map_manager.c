@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:41:25 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 17:58:31 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:19:34 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	fill_first_last(char **check_map, t_data *data)
 		check_map[i] = ft_calloc(sizeof(char), (count + 4));
 		i++;
 	}
-	fill_first_last_helper(check_map, data, len, count);
+	fill_first_last_help(check_map, data, len, count);
 	return (count + 2);
 }
 
@@ -66,43 +66,27 @@ void	fill_check(char **check_map, t_data *data, int max)
 {
 	int	i;
 	int	j;
-	int	x;
-	int	y;
 
 	i = 0;
-	j = 0;
-	x = 1;
 	while (data->map[i])
 	{
 		j = 0;
-		y = 1;
-		check_map[x][0] = 'e';
+		check_map[i + 1][0] = 'e';
 		while (data->map[i][j])
 		{
 			if (data->map[i][j] != '\n')
-			{
-				check_map[x][y] = data->map[i][j];
-				y++;
-				j++;
-			}
+				check_map[i + 1][j + 1] = data->map[i][j];
 			else
-			{
-				check_map[x][y] = ' ';
-				y++;
-				j++;
-			}
+				check_map[i + 1][j + 1] = ' ';
+			j++;
 		}
-		while (y < max)
-		{
-			check_map[x][y] = 'e';
-			y++;
-		}
-		check_map[x][y] = '\n';
-		check_map[x][y + 1] = '\0';
+		while (j + 1 < max)
+			check_map[i + 1][j++ + 1] = 'e';
+		check_map[i + 1][j + 1] = '\n';
+		check_map[i + 1][j + 2] = '\0';
 		i++;
-		x++;
 	}
-	check_map[x + 1] = NULL;
+	check_map[i + 2] = NULL;
 	check_space_wall(check_map);
 }
 

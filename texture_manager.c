@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:59:55 by alegreci          #+#    #+#             */
-/*   Updated: 2023/07/02 17:47:49 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:44:18 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	draw_texture(int crop_up, int crop_down, int y, t_data *data)
 	{
 		tex_y = (int)(((double)crop_up / (double)data->col_h * i.h));
 		tex_pos += step;
-		my_mlx_pixel_put(&data->screen, data->ray->col, y, color_chooser(i, tex_y, data));
+		my_mlx_pixel_put(&data->screen, data->ray->col, \
+		y, color_chooser(i, tex_y, data));
 		y++;
 		crop_up++;
 	}

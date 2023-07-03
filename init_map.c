@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:58:29 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 16:53:05 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:02:38 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	save_map(t_data *data, char **all_map)
 		j = 0;
 		while (all_map[i][j])
 		{
-			if (all_map[i][j] == '1' && all_map[i][j + 1] == '1' && \
-			!ft_strchr(all_map[i], ',') && !ft_strchr(all_map[i], '/'))
+			if (all_map[i][j] == '1' && all_map[i][j + 1] == '1' &&
+				!ft_strchr(all_map[i], ',') && !ft_strchr(all_map[i], '/'))
 			{
 				save_map_helper(data, all_map, i);
 				return ;
@@ -84,6 +84,10 @@ void	save_map(t_data *data, char **all_map)
 		}
 		i++;
 	}
+	write(1, "Error\n", 7);
+	ft_free_all_map(all_map);
+	free(all_map);
+	exit (1);
 }
 
 int	map_conversion(t_data *data, char *path)

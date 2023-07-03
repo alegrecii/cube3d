@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:00:02 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 18:03:48 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:52:39 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ typedef struct s_data
 	t_ray			*ray;
 }		t_data;
 
-
 int				map_conversion(t_data *data, char *path);
 void			map_conversion_helper(t_data *data, char **all_map, int fd);
 void			save_map(t_data *data, char **all_map);
@@ -134,9 +133,8 @@ void			game_starter(t_data *data);
 int				input_manager(int keycode, t_data *data);
 int				open_door_helper(t_data *data, int opened);
 int				check_wall_helper(t_data *data, int keycode, int wall_dist);
-void			rotator_helper(t_data *data, double dirx, double camx);
 void			p_esc_keys(int keycode, t_data *data);
-int				rotator(int keycode, t_data *data);
+int				rotator(int keycode, t_data *data, double camx, double dirx);
 int				updater(t_data *data);
 unsigned int	max_light_calculator(unsigned int color);
 int				cam_init(t_data *data);
@@ -158,7 +156,7 @@ void			init_fire(t_data *data);
 int				check_map_manager(t_data *data);
 void			check_space_wall(char **check_map);
 void			flood_fill(t_data *data, char **map, int row, int col);
-void			fill_first_last_helper(char **check_map, t_data *data, int len, int count);
+void			fill_first_last_help(char **check_map, \
+				t_data *data, int len, int count);
 
 #endif
-

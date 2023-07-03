@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 15:50:55 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 18:52:55 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:04:28 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	fill_first_last_helper(char **check_map, t_data *data, int len, int count)
+void	fill_first_last_help(char **check_map, t_data *data, int len, int count)
 {
 	int	i;
 

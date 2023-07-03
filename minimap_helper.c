@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_helper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdi-paol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:10:50 by mdi-paol          #+#    #+#             */
-/*   Updated: 2023/07/02 18:51:53 by mdi-paol         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:43:59 by alegreci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/* void	draw_blocks_helper(t_data *data, int addx, int addy)
-{
-
-}
- */
 void	put_player_helper(t_data *data)
 {
 	my_mlx_pixel_put(&data->screen, data->minimap.startx + \
